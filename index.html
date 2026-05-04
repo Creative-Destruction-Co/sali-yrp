@@ -6,112 +6,449 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reset.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css" id="theme">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
   :root {
-    --ink: #1a1a1a;
-    --muted: #666;
-    --accent: #1a3a52;
+    --ink: #15110d;
+    --ink-soft: #2c2620;
+    --muted: #6b6357;
+    --rule: #d9d2c5;
+    --rule-soft: #ece6d9;
+    --paper: #f7f3ec;
+    --paper-deep: #f1ecdf;
+    --accent: #b91c1c;
+    --serif: 'Newsreader', 'Source Serif 4', Georgia, serif;
+    --sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Menlo, monospace;
   }
-  body, .reveal { background: #fff; }
-  .reveal h1, .reveal h2, .reveal h3 { text-transform: none; color: var(--ink); }
-  .reveal section { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
 
-  /* Slayt çerçevesi: dikey 3 bant — başlık, gövde, lejant. Reveal'in display:block override için yüksek specificity. */
-  .reveal .slides > section.slide {
-    display: flex !important;
-    flex-direction: column;
-    padding: 18px 28px;
+  html, body, .reveal { background: var(--paper); }
+  .reveal section { font-family: var(--sans); color: var(--ink); }
+  .reveal h1, .reveal h2, .reveal h3 { text-transform: none; color: var(--ink); margin: 0; }
+
+  /* === SLAYT (içerik wrapper'ı kullanarak Reveal'in inline display:block ile çakışmayı önle) === */
+  .reveal .slides > section.slide { padding: 0; height: 100%; box-sizing: border-box; }
+  .slide-inner {
     height: 100%;
+    width: 100%;
     box-sizing: border-box;
+    padding: 36px 64px 24px;
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
   }
-  .slide-title { font-size: 30px; font-weight: 700; letter-spacing: -0.4px; line-height: 1.15; margin: 0 0 4px 0; }
-  .slide-sub { font-size: 16px; color: var(--muted); margin: 0 0 10px 0; }
-  .slide-body { flex: 1 1 auto; min-height: 0; display: flex; align-items: center; justify-content: center; }
+
+  /* Editorial başlık satırı */
+  .slide-head {
+    flex: 0 0 auto;
+    border-top: 2px solid var(--ink);
+    padding-top: 11px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .slide-eyebrow {
+    font-family: var(--sans);
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .slide-eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 2px;
+    background: var(--accent);
+  }
+  .slide-folio {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .reveal h2.slide-title {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 600;
+    font-variation-settings: 'opsz' 32;
+    letter-spacing: -0.012em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 4px 0 0 0;
+    max-width: 1280px;
+    text-wrap: balance;
+    text-transform: none;
+  }
+  .reveal p.slide-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.45;
+    margin: 8px 0 12px 0;
+    max-width: 1100px;
+  }
+  .slide-headblock { flex: 0 0 auto; padding-bottom: 14px; }
+
+  .slide-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
   .slide-body > object,
   .slide-body > svg,
-  .slide-body > .frame { width: 100%; height: 100%; border: none; shape-rendering: geometricPrecision; }
+  .slide-body > .frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    shape-rendering: geometricPrecision;
+    display: block;
+  }
+
+  /* === LEJANT === */
   .slide-legend {
     flex: 0 0 auto;
-    display: flex; flex-wrap: wrap; gap: 14px 26px;
+    display: flex; flex-wrap: wrap;
+    gap: 8px 26px;
     align-items: center; justify-content: center;
-    padding-top: 10px;
-    font-size: 18px; color: var(--ink);
+    padding-top: 14px;
+    margin-top: 10px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.012em;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
   }
-  .legend-item { display: inline-flex; align-items: center; gap: 8px; }
-  .legend-swatch { display: inline-block; width: 22px; height: 14px; border-radius: 2px; box-shadow: 0 0 0 0.5px rgba(0,0,0,.2); }
-  .legend-grad { display: inline-block; height: 14px; width: 280px; border-radius: 2px; box-shadow: 0 0 0 0.5px rgba(0,0,0,.2); }
-  .legend-cap { font-size: 14px; color: var(--muted); margin-left: 6px; }
-  .legend-title { font-size: 16px; font-weight: 600; margin-right: 4px; }
+  .legend-item {
+    display: inline-flex; align-items: center; gap: 11px;
+    line-height: 1.1;
+  }
+  .legend-swatch {
+    display: inline-block;
+    width: 24px; height: 16px;
+    border-radius: 1px;
+    box-shadow: inset 0 0 0 0.5px rgba(21,17,13,.22);
+  }
+  .legend-grad {
+    display: inline-block;
+    height: 18px; width: 360px;
+    border-radius: 1px;
+    box-shadow: inset 0 0 0 0.5px rgba(21,17,13,.22);
+  }
+  .legend-grad-wrap {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .legend-grad-axis {
+    display: flex;
+    justify-content: space-between;
+    width: 360px;
+    font-family: var(--mono);
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+  .legend-cap {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--muted);
+    margin-left: 4px;
+  }
+  .legend-title {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-right: 6px;
+  }
 
-  /* Kapak - center:false olduğu için manuel dikey ortalama */
-  .reveal .slides > section.cover {
-    display: flex !important;
+  /* === KAPAK === */
+  .reveal .slides > section.cover { padding: 0; height: 100%; box-sizing: border-box; }
+  .cover-inner {
+    height: 100%; width: 100%;
+    box-sizing: border-box;
+    padding: 0 110px;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding: 0 60px;
-    box-sizing: border-box;
+    align-items: stretch;
+    background:
+      radial-gradient(circle at 92% 8%, rgba(255,196,54,0.12), transparent 38%),
+      radial-gradient(circle at 8% 96%, rgba(254,0,0,0.06), transparent 42%),
+      var(--paper);
+    position: relative;
   }
-  .cover h1 { font-size: 64px; font-weight: 800; letter-spacing: -1px; margin: 0; text-align: center; line-height: 1.1; }
-  .cover .accent { display: block; height: 5px; width: 240px; margin: 28px auto; background: linear-gradient(90deg, #ffb000 0 33%, #e63946 33% 66%, #6c4099 66% 100%); border-radius: 3px; }
-  .cover h3 { font-size: 26px; font-weight: 500; color: #444; margin: 0; text-align: center; }
-  .cover .meta { font-size: 16px; color: var(--muted); margin-top: 18px; text-align: center; }
-  /* Kapakta reveal kontrolleri ve sayfa numarası gizli */
-  .reveal .slides section.cover ~ * { /* not used */ }
+  .cover-inner::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 8px;
+    background: linear-gradient(90deg,
+      #FFC436 0 16.66%,
+      #FE0000 16.66% 33.33%,
+      #11009E 33.33% 50%,
+      #52D3D8 50% 66.66%,
+      #8B1874 66.66% 83.33%,
+      #65B741 83.33% 100%);
+  }
+  .cover-inner::after {
+    content: "";
+    position: absolute;
+    inset: 32px 56px;
+    border: 1px solid rgba(21,17,13,0.10);
+    pointer-events: none;
+  }
+  .cover-grid {
+    position: relative; z-index: 2;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    padding: 76px 0 64px;
+  }
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cover-top .lockup {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .cover-top .lockup .bar {
+    width: 32px; height: 2px;
+    background: var(--ink);
+    display: inline-block;
+  }
+  .cover-top .index { font-variant-numeric: tabular-nums; }
+  .cover-center {
+    align-self: center;
+    padding-top: 12px;
+  }
+  .cover-kicker {
+    font-family: var(--sans);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .cover-kicker::before {
+    content: "";
+    display: inline-block;
+    width: 26px; height: 2px;
+    background: var(--accent);
+  }
+  .reveal .cover h1 {
+    font-family: var(--serif);
+    font-variation-settings: 'opsz' 72;
+    font-size: 116px;
+    font-weight: 700;
+    letter-spacing: -0.028em;
+    line-height: 0.94;
+    color: var(--ink);
+    text-align: left;
+    text-wrap: balance;
+    text-transform: none;
+  }
+  .cover h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .cover .accent {
+    display: block;
+    height: 4px;
+    width: 360px;
+    margin: 32px 0 26px;
+    background: linear-gradient(90deg,
+      #FFC436 0 16.66%,
+      #FE0000 16.66% 33.33%,
+      #11009E 33.33% 50%,
+      #52D3D8 50% 66.66%,
+      #8B1874 66.66% 83.33%,
+      #65B741 83.33% 100%);
+  }
+  .reveal .cover h3 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    text-align: left;
+    max-width: 950px;
+    letter-spacing: 0.005em;
+    text-transform: none;
+  }
+  .cover h3 strong { font-style: normal; font-weight: 600; color: var(--ink); }
+  .cover-bottom {
+    align-self: end;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    border-top: 1px solid rgba(21,17,13,0.18);
+    padding-top: 20px;
+  }
+  .cover-stats {
+    display: flex;
+    gap: 56px;
+  }
+  .cover-stats .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cover-stats .num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 600;
+    font-variation-settings: 'opsz' 36;
+    color: var(--ink);
+    letter-spacing: -0.018em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .cover-stats .lbl {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cover-meta {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .cover-meta strong {
+    font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* Reveal kontrolleri */
   body.cover-active .reveal .controls,
   body.cover-active .reveal .progress,
   body.cover-active .reveal .slide-number { opacity: 0 !important; pointer-events: none; }
-  .reveal .controls { color: rgba(0,0,0,.35); }
-  .reveal .slide-number { background: transparent; color: rgba(0,0,0,.4); font-size: 12px; }
+  .reveal .controls { color: rgba(21,17,13,.22); }
+  .reveal .controls .navigate-left,
+  .reveal .controls .navigate-right { transition: color .18s ease; }
+  .reveal .controls .navigate-left:hover,
+  .reveal .controls .navigate-right:hover { color: var(--accent); }
+  .reveal .progress {
+    color: var(--ink);
+    height: 2px;
+    background: rgba(21,17,13,.06);
+  }
+  /* Reveal'in kendi slide-number'ı slayt-head'deki folio ile çakışıyor — gizle */
+  .reveal .slide-number { display: none !important; }
 
-  /* Zoom animasyon slaytı (TR ilçe → Pendik) */
-  .reveal .slides > section.zoom-slide { padding: 0 !important; display: block !important; }
-  .reveal section.zoom-slide .slide-title { position: absolute; top: 14px; left: 28px; right: 28px; z-index: 5; pointer-events: none; }
+  /* Zoom animasyon slaytı */
+  .reveal section.zoom-slide .slide-inner {
+    padding: 0;
+    background: var(--paper);
+    position: relative;
+  }
+  .reveal section.zoom-slide .slide-head {
+    position: absolute; top: 28px; left: 64px; right: 64px;
+    z-index: 5;
+    pointer-events: none;
+    background: rgba(247,243,236,0.92);
+    padding: 11px 14px 8px;
+    margin: 0;
+  }
+  .reveal section.zoom-slide .slide-headblock {
+    position: absolute; top: 78px; left: 64px;
+    z-index: 5;
+    pointer-events: none;
+    padding: 6px 14px 10px;
+    background: rgba(247,243,236,0.92);
+    margin: 0;
+  }
+  .reveal section.zoom-slide .slide-title {
+    margin: 0;
+  }
   .layer-stack { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .layer-stack > object { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; shape-rendering: geometricPrecision; }
   .layer-ilce-zoom { z-index: 1; transform: scale(1); }
   .layer-pendik-auto { z-index: 2; opacity: 0; }
   .reveal section.zoom-slide.present .layer-ilce-zoom {
     animation:
-      zoom-tr-istanbul-pendik 7s cubic-bezier(0.5, 0, 0.5, 1) forwards,
-      fade-out-ilce 1.2s ease-in-out 6.8s forwards;
+      zoom-direct-pendik 5s cubic-bezier(0.4, 0, 0.4, 1) forwards,
+      fade-out-ilce 1s ease-in-out 4.8s forwards;
   }
   .reveal section.zoom-slide.present .layer-pendik-auto {
-    animation: fade-pendik 1.2s ease-in-out 6.8s forwards;
+    animation: fade-pendik 1s ease-in-out 4.8s forwards;
   }
-  @keyframes zoom-tr-istanbul-pendik {
-    0%   { transform: scale(1);  transform-origin: 18.46% 23.45%; }
-    45%  { transform: scale(5);  transform-origin: 18.46% 23.45%; }
-    100% { transform: scale(30); transform-origin: 20.45% 26.16%; }
+  /* Pendik'i ekran merkezine pin'le.
+     Slide-inner 1600x1000 (zoom-slide padding:0). SVG aspect 1600/711 → meet ile letterbox y=(1000-711)/2=144.5.
+     Pendik içerik koord (324.0, 152.2), element koord (324, 296.7). Slide merkez (800, 500).
+     Origin: x=20.25%, y=29.67%. Scale-after translate: (476, 203). */
+  .reveal section.zoom-slide .layer-ilce-zoom { transform-origin: 20.25% 29.67%; }
+  @keyframes zoom-direct-pendik {
+    0%   { transform: translate(0,0)         scale(1); }
+    100% { transform: translate(476px,203px) scale(35); }
   }
   @keyframes fade-pendik { from { opacity: 0; } to { opacity: 1; } }
   @keyframes fade-out-ilce { from { opacity: 1; } to { opacity: 0; } }
 
-  /* Renkler — parti paleti */
-  .akp { background: #ffb000; }
-  .chp { background: #e63946; }
-  .ysp { background: #6c4099; }
-  .mhp { background: #d2691e; }
-  .iyi { background: #00a4d6; }
-  .yrp { background: #009b6f; }
+  /* Renkler — ank-ar.com paleti (DEĞİŞTİRİLMEDİ) */
+  .akp { background: #FFC436; }
+  .chp { background: #FE0000; }
+  .ysp { background: #8B1874; }
+  .mhp { background: #11009E; }
+  .iyi { background: #52D3D8; }
+  .yrp { background: #65B741; }
 
-  /* Diverging gradient (kırmızı ← beyaz → mavi) */
+  /* Diverging gradient */
   .grad-div { background: linear-gradient(90deg, #b2182b 0%, #ef8a62 25%, #fddbc7 45%, #ffffff 50%, #d1e5f0 55%, #67a9cf 75%, #2166ac 100%); }
-  /* Tek-mavi (memleket) */
   .grad-blue { background: linear-gradient(90deg, #ffffff, #0a3c8c); }
-  /* LISA */
   .lisa-hh { background: #d62728; }
   .lisa-ll { background: #1f77b4; }
   .lisa-hl { background: #ff9896; }
   .lisa-lh { background: #aec7e8; }
   .lisa-ns { background: #dddddd; }
-  /* Mahalle tip */
-  .tip-tasra { background: #8b6f4e; }
-  .tip-low { background: #e63946; }
+  .tip-tasra { background: #2ca02c; }
+  .tip-low { background: #1f77b4; }
   .tip-mid { background: #f4a261; }
-  .tip-high { background: #2a9d8f; }
-  .tip-top { background: #264653; }
+  .tip-high { background: #d62728; }
   .tip-na { background: #d8dde0; }
 </style>
 </head>
@@ -120,194 +457,335 @@
 
 <!-- ========== 1) KAPAK ========== -->
 <section class="cover" data-state="cover">
-  <h1>Pendik — Mahalle Bazlı<br>Seçim Analizi</h1>
-  <span class="accent"></span>
-  <h3>2015 — 2024 · 41 mahalle · ~545 bin seçmen</h3>
-  <div class="meta">2023 Milletvekili Genel Seçimi — Birinci Parti haritası ile başlar</div>
+  <div class="cover-inner">
+    <div class="cover-grid">
+      <div class="cover-top">
+        <div class="lockup">
+          <span class="bar"></span>
+          <span>Saha Raporu &nbsp;·&nbsp; İstanbul</span>
+        </div>
+        <div class="index">No. 01 &nbsp;·&nbsp; Pendik</div>
+      </div>
+      <div class="cover-center">
+        <div class="cover-kicker">2023 Milletvekili Genel Seçimi</div>
+        <h1>Pendik &mdash;<br>Mahalle Bazlı<br><em>Seçim Analizi</em></h1>
+        <span class="accent"></span>
+        <h3>2015 — 2024 arası dört genel seçim, üç yerel seçim;<br><strong>41 mahalle</strong>, <strong>545 bin seçmen</strong>, sandık-bazlı oran toplamları.</h3>
+      </div>
+      <div class="cover-bottom">
+        <div class="cover-stats">
+          <div class="stat"><span class="num">41</span><span class="lbl">Mahalle</span></div>
+          <div class="stat"><span class="num">545K</span><span class="lbl">Seçmen</span></div>
+          <div class="stat"><span class="num">22</span><span class="lbl">Seçim Dosyası</span></div>
+          <div class="stat"><span class="num">10y</span><span class="lbl">Zaman Penceresi</span></div>
+        </div>
+        <div class="cover-meta">
+          <strong>Veri Kaynakları</strong>
+          YSK · sandık kütüğü · Endeksa<br>
+          GADM · ank-ar paleti · Pendik mahalle SHP
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ========== 2) TR İL — Birinci Parti ========== -->
+<!-- ========== 2) GADM TR İL — 2023 MV Birinci Parti ========== -->
 <section class="slide">
-  <h2 class="slide-title">2023 Milletvekili — Türkiye İl Bazında Birinci Parti</h2>
-  <div class="slide-body">
-    <object data="_v2_assets/tr_il_winner.svg" type="image/svg+xml"></object>
-  </div>
-  <div class="slide-legend">
-    <span class="legend-item"><span class="legend-swatch akp"></span>AK PARTİ <span class="legend-cap">(58 il)</span></span>
-    <span class="legend-item"><span class="legend-swatch ysp"></span>Yeşil Sol Parti <span class="legend-cap">(13 il)</span></span>
-    <span class="legend-item"><span class="legend-swatch chp"></span>CHP <span class="legend-cap">(10 il)</span></span>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Türkiye İl Geneli</span><span class="slide-folio">01 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">2023 Milletvekili — Türkiye İl Bazında Birinci Parti <span style="color:var(--muted);font-style:italic;font-weight:400;">(GADM sınırları)</span></h2>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/gadm_tr_il_2023mv.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend">
+      <span class="legend-item"><span class="legend-swatch akp"></span>AK PARTİ <span class="legend-cap">58 il</span></span>
+      <span class="legend-item"><span class="legend-swatch ysp"></span>Yeşil Sol <span class="legend-cap">13 il</span></span>
+      <span class="legend-item"><span class="legend-swatch chp"></span>CHP <span class="legend-cap">10 il</span></span>
+    </div>
   </div>
 </section>
 
-<!-- ========== 3) TR İLÇE — Birinci Parti ========== -->
+<!-- ========== 3) GADM TR İLÇE — 2023 MV Birinci Parti ========== -->
 <section class="slide">
-  <h2 class="slide-title">2023 Milletvekili — Türkiye İlçe Bazında Birinci Parti</h2>
-  <div class="slide-body">
-    <object data="_v2_assets/tr_ilce_winner.svg" type="image/svg+xml"></object>
-  </div>
-  <div class="slide-legend">
-    <span class="legend-item"><span class="legend-swatch akp"></span>AK PARTİ</span>
-    <span class="legend-item"><span class="legend-swatch chp"></span>CHP</span>
-    <span class="legend-item"><span class="legend-swatch ysp"></span>Yeşil Sol</span>
-    <span class="legend-item"><span class="legend-swatch mhp"></span>MHP</span>
-    <span class="legend-item"><span class="legend-swatch iyi"></span>İYİ Parti</span>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Türkiye İlçe Geneli</span><span class="slide-folio">02 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">2023 Milletvekili — Türkiye İlçe Bazında Birinci Parti <span style="color:var(--muted);font-style:italic;font-weight:400;">(GADM sınırları)</span></h2>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/gadm_tr_ilce_2023mv.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend">
+      <span class="legend-item"><span class="legend-swatch akp"></span>AK PARTİ <span class="legend-cap">668</span></span>
+      <span class="legend-item"><span class="legend-swatch chp"></span>CHP <span class="legend-cap">192</span></span>
+      <span class="legend-item"><span class="legend-swatch ysp"></span>Yeşil Sol <span class="legend-cap">94</span></span>
+      <span class="legend-item"><span class="legend-swatch mhp"></span>MHP <span class="legend-cap">16</span></span>
+      <span class="legend-item"><span class="legend-swatch iyi"></span>İYİ <span class="legend-cap">3</span></span>
+    </div>
   </div>
 </section>
 
-<!-- ========== 4) ZOOM: TR İlçe → Pendik ========== -->
+<!-- ========== 6) ZOOM: TR İlçe → Pendik ========== -->
 <section class="slide zoom-slide">
-  <h2 class="slide-title">Türkiye → İstanbul → Pendik</h2>
-  <div class="layer-stack">
-    <object class="layer-ilce-zoom" data="_v2_assets/tr_ilce_winner.svg" type="image/svg+xml"></object>
-    <object class="layer-pendik-auto" data="_v2_assets/pendik_winner_2023mv.svg" type="image/svg+xml"></object>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Geçiş · Türkiye → Pendik</span><span class="slide-folio">05 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Türkiye → İstanbul → <em style="font-style:italic;">Pendik</em></h2>
+    </div>
+    <div class="layer-stack">
+      <object class="layer-ilce-zoom" data="_v2_assets/gadm_tr_ilce_2023mv.svg" type="image/svg+xml"></object>
+      <object class="layer-pendik-auto" data="_v2_assets/pendik_winner_2023mv.svg" type="image/svg+xml"></object>
+    </div>
   </div>
 </section>
 
-<!-- ========== 5) Pendik mahalle tip ========== -->
+<!-- ========== 7) Pendik mahalle tip ========== -->
 <section class="slide">
-  <h2 class="slide-title">Pendik — Mahalle Tipleri (Endeksa gelir + Taşra)</h2>
-  <div class="slide-body">
-    <object data="_v2_assets/pendik_tip.svg" type="image/svg+xml"></object>
-  </div>
-  <div class="slide-legend">
-    <span class="legend-item"><span class="legend-swatch tip-tasra"></span>Taşra</span>
-    <span class="legend-item"><span class="legend-swatch tip-low"></span>Düşük gelir</span>
-    <span class="legend-item"><span class="legend-swatch tip-mid"></span>Orta gelir</span>
-    <span class="legend-item"><span class="legend-swatch tip-high"></span>Yüksek gelir</span>
-    <span class="legend-item"><span class="legend-swatch tip-top"></span>En yüksek</span>
-    <span class="legend-item"><span class="legend-swatch tip-na"></span>Veri yok</span>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Pendik · Mahalle Tipolojisi</span><span class="slide-folio">06 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Pendik — Mahalle Tipleri <span style="color:var(--muted);font-style:italic;font-weight:400;">(Endeksa gelir + Taşra)</span></h2>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/pendik_tip.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend">
+      <span class="legend-item"><span class="legend-swatch tip-tasra"></span>Taşra</span>
+      <span class="legend-item"><span class="legend-swatch tip-low"></span>Düşük gelir</span>
+      <span class="legend-item"><span class="legend-swatch tip-mid"></span>Orta gelir</span>
+      <span class="legend-item"><span class="legend-swatch tip-high"></span>Yüksek gelir</span>
+      <span class="legend-item"><span class="legend-swatch tip-na"></span>Veri yok</span>
+    </div>
   </div>
 </section>
 
-<!-- ========== 6) Gelir bar ========== -->
+<!-- ========== 8) Gelir bar ========== -->
 <section class="slide">
-  <h2 class="slide-title">Pendik — Gelir Grubuna Göre Seçmen Dağılımı</h2>
-  <p class="slide-sub">Mahalle bazında gelir grubu (Endeksa) × seçmen sayısı (sandık kütüğü)</p>
-  <div class="slide-body">
-    <object data="_v2_assets/pendik_gelir_bar.svg" type="image/svg+xml"></object>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Pendik · Gelir Dağılımı</span><span class="slide-folio">07 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Pendik — Gelir Grubuna Göre Seçmen Dağılımı</h2>
+      <p class="slide-sub">Mahalle bazında gelir grubu (Endeksa) × seçmen sayısı (sandık kütüğü).</p>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/pendik_gelir_bar.svg" type="image/svg+xml"></object>
+    </div>
   </div>
 </section>
 
-<!-- ========== 7) Memleket harita (TR ilçe choropleth) ========== -->
+<!-- ========== 9) Memleket harita ========== -->
 <section class="slide">
-  <h2 class="slide-title">Pendik'te Yaşayan Seçmenlerin Memleket Dağılımı</h2>
-  <p class="slide-sub">Sandık kütüğü "Nüfus İli × İlçesi" — Türkiye ilçe haritası üzerinde yüzde</p>
-  <div class="slide-body">
-    <object data="_v2_assets/memleket_harita.svg" type="image/svg+xml"></object>
-  </div>
-  <div class="slide-legend">
-    <span class="legend-item"><span class="legend-title">% Pendikli</span><span class="legend-grad grad-blue"></span><span class="legend-cap">0% → en yüksek</span></span>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Pendik · Memleket Coğrafyası</span><span class="slide-folio">08 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Pendik'te Yaşayan Seçmenlerin Memleket Dağılımı</h2>
+      <p class="slide-sub">Sandık kütüğü "Nüfus İli × İlçesi" — Türkiye ilçe haritası üzerinde yüzde olarak.</p>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/memleket_harita.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend">
+      <span class="legend-item"><span class="legend-title">% Pendikli</span><span class="legend-grad grad-blue"></span><span class="legend-cap">0% → en yüksek</span></span>
+    </div>
   </div>
 </section>
 
-<!-- ========== 8) Bölge bar ========== -->
+<!-- ========== 10) Bölge bar ========== -->
 <section class="slide">
-  <h2 class="slide-title">Pendik — Memleket Bölgesine Göre Seçmen Dağılımı</h2>
-  <div class="slide-body">
-    <object data="_v2_assets/pendik_bolge_bar.svg" type="image/svg+xml"></object>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Pendik · Bölge Dağılımı</span><span class="slide-folio">09 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Pendik — Memleket Bölgesine Göre Seçmen Dağılımı</h2>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/pendik_bolge_bar.svg" type="image/svg+xml"></object>
+    </div>
   </div>
 </section>
 
-<!-- ========== 9) Gelir × Bölge ========== -->
+<!-- ========== 11) Gelir × Bölge ========== -->
 <section class="slide">
-  <h2 class="slide-title">Pendik — Gelir Grubu × Memleket Bölgesi</h2>
-  <p class="slide-sub">Her panel kendi gelir grubu içindeki bölge yüzdesi (kolon toplamı %100)</p>
-  <div class="slide-body">
-    <object data="_v2_assets/pendik_gelir_x_bolge.svg" type="image/svg+xml"></object>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Pendik · Çapraz Tablo</span><span class="slide-folio">10 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Pendik — Gelir Grubu <span style="color:var(--accent);font-style:italic;">×</span> Memleket Bölgesi</h2>
+      <p class="slide-sub">Her panel kendi gelir grubu içindeki bölge yüzdesi <span style="font-style:normal;color:var(--ink-soft);">(kolon toplamı %100)</span>.</p>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/pendik_gelir_x_bolge.svg" type="image/svg+xml"></object>
+    </div>
   </div>
 </section>
 
-<!-- ========== 10) Memleket LISA ========== -->
+<!-- ========== 12b) Memleket HH Birleşik ========== -->
 <section class="slide">
-  <h2 class="slide-title">Memleket Bölgeleri — LISA Mekânsal Otokorelasyonu</h2>
-  <p class="slide-sub">Her panel: bölgenin yoğunlaştığı mahalleler (HH) ve seyrekleştiği mahalleler (LL)</p>
-  <div class="slide-body">
-    <object data="_v2_assets/pendik_memleket_lisa.svg" type="image/svg+xml"></object>
-  </div>
-  <div class="slide-legend">
-    <span class="legend-item"><span class="legend-swatch lisa-hh"></span>High-High <span class="legend-cap">yoğun küme</span></span>
-    <span class="legend-item"><span class="legend-swatch lisa-ll"></span>Low-Low <span class="legend-cap">seyrek küme</span></span>
-    <span class="legend-item"><span class="legend-swatch lisa-hl"></span>High-Low</span>
-    <span class="legend-item"><span class="legend-swatch lisa-lh"></span>Low-High</span>
-    <span class="legend-item"><span class="legend-swatch lisa-ns"></span>Anlamsız (p &gt; 0.05)</span>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Pendik · HH Birleşik</span><span class="slide-folio">12 / 18</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Memleket HH Kümeleri — Tek Harita</h2>
+      <p class="slide-sub">Her mahalle, en güçlü olduğu memleket bölgesinin yoğunlaştığı (HH) küme rengiyle boyandı; HH'a düşmeyen mahalleler gri.</p>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/pendik_memleket_hh_birlesik.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend">
+      <span class="legend-item"><span class="legend-swatch" style="background:#1a3a52"></span>Pendikli</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#4a90b8"></span>İstanbul (diğer)</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#88b5cf"></span>Marmara</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#2a9d8f"></span>Karadeniz</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#e9c46a"></span>İç Anadolu</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#e76f51"></span>Doğu Anadolu</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#9c6644"></span>Güneydoğu Anadolu</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#f4a261"></span>Akdeniz</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#588b8b"></span>Ege</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#e8e8e8"></span>HH değil</span>
+    </div>
   </div>
 </section>
 
-<!-- ========== 11) AKP 2018→2023 swing ========== -->
+<!-- ========== 13) AKP swing ========== -->
 <section class="slide">
-  <h2 class="slide-title">AK Parti — 2018→2023 Mahalle Sapması (İlçe Ortalamasına Göre)</h2>
-  <p class="slide-sub">Pendik ilçe ortalama swing: −7.60 puan · 0 = ilçe ile aynı oranda kayıp</p>
-  <div class="slide-body">
-    <object data="_v2_assets/pendik_akp_swing.svg" type="image/svg+xml"></object>
-  </div>
-  <div class="slide-legend">
-    <span class="legend-item"><span class="legend-title">Sapma (puan)</span><span class="legend-grad grad-div"></span></span>
-    <span class="legend-item"><span class="legend-cap">Kırmızı: ilçeden çok kaybetti · Mavi: ilçeden az kaybetti / kazandı</span></span>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">AK Parti · Mahalle Sapması</span><span class="slide-folio">12 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">AK Parti — 2018 → 2023 Mahalle Sapması <span style="color:var(--muted);font-style:italic;font-weight:400;">(ilçe ortalamasına göre)</span></h2>
+      <p class="slide-sub">Pendik ilçe ortalama swing: <strong style="font-style:normal;color:var(--accent);">−7.60 puan</strong> · 0 = ilçe ile aynı oranda kayıp.</p>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/pendik_akp_swing.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend">
+      <span class="legend-grad-wrap">
+        <span class="legend-grad grad-div"></span>
+        <span class="legend-grad-axis"><span>−14</span><span>−11</span><span>−8</span><span>−5</span><span>−2</span></span>
+      </span>
+      <span class="legend-item"><span class="legend-cap">AKP oy azalması (puan) · Pendik ortalaması −7.6</span></span>
+    </div>
   </div>
 </section>
 
-<!-- ========== 12) Saadet 2015K→2018 swing ========== -->
+<!-- ========== 15) Saadet 4 dönem ========== -->
 <section class="slide">
-  <h2 class="slide-title">Saadet — 2015 Kasım → 2018 Mahalle Sapması</h2>
-  <p class="slide-sub">İlçe ortalamasına göre puan farkı (winsorize 5–95 ile uçlar yumuşatıldı)</p>
-  <div class="slide-body">
-    <object data="_v2_assets/pendik_saadet_swing.svg" type="image/svg+xml"></object>
-  </div>
-  <div class="slide-legend">
-    <span class="legend-item"><span class="legend-title">Sapma (puan)</span><span class="legend-grad grad-div"></span></span>
-    <span class="legend-item"><span class="legend-cap">Kırmızı: ilçeden çok kaybetti · Mavi: ilçeden çok kazandı</span></span>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Saadet · Dört Dönem Karşılaştırması</span><span class="slide-folio">14 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Saadet — Dört Dönem Mahalle Sapması</h2>
+      <p class="slide-sub">2011 · 2015 Haziran · 2015 Kasım · 2018 — her panelde mahallenin ilçe ortalamasına göre puan farkı.</p>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/pendik_saadet_4donem.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend">
+      <span class="legend-grad-wrap">
+        <span class="legend-grad grad-div"></span>
+        <span class="legend-grad-axis"><span>−2.4</span><span>−1.2</span><span>0</span><span>+1.2</span><span>+2.4</span></span>
+      </span>
+      <span class="legend-item"><span class="legend-cap">puan · Kırmızı = ilçeden düşük · Mavi = ilçeden yüksek</span></span>
+    </div>
   </div>
 </section>
 
-<!-- ========== 13) Saadet 4 dönem ========== -->
+<!-- ========== 16a) YRP 2024 — İBB Başkanlığı ========== -->
 <section class="slide">
-  <h2 class="slide-title">Saadet — Dört Dönem Mahalle Sapması (2011, 2015 Haziran, 2015 Kasım, 2018)</h2>
-  <div class="slide-body">
-    <object data="_v2_assets/pendik_saadet_4donem.svg" type="image/svg+xml"></object>
-  </div>
-  <div class="slide-legend">
-    <span class="legend-item"><span class="legend-title">Mahalle − İlçe ortalaması (puan)</span><span class="legend-grad grad-div"></span></span>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Yeniden Refah · 2024 İBB</span><span class="slide-folio">15 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Yeniden Refah — 2024 İBB Başkanlığı</h2>
+      <p class="slide-sub">Mahalle bazlı oy oranı; Pendik ortalaması <strong style="font-style:normal;color:var(--accent);">%3.46</strong>.</p>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/pendik_yrp_2024_ibb.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend">
+      <span class="legend-grad-wrap">
+        <span class="legend-grad grad-div"></span>
+        <span class="legend-grad-axis"><span>−3.1</span><span>−1.5</span><span>0</span><span>+1.5</span><span>+3.1</span></span>
+      </span>
+      <span class="legend-item"><span class="legend-cap">puan · Pendik ortalamasına göre sapma</span></span>
+    </div>
   </div>
 </section>
 
-<!-- ========== 14) YRP 2024 3 seçim ========== -->
+<!-- ========== 16b) YRP 2024 — İlçe Belediye ========== -->
 <section class="slide">
-  <h2 class="slide-title">Yeniden Refah — 2024 Üç Seçim Karşılaştırması</h2>
-  <p class="slide-sub">İBB Başkanlığı · İlçe Belediye Başkanlığı · Belediye Meclisi — Pendik ortalamasına göre sapma</p>
-  <div class="slide-body">
-    <object data="_v2_assets/pendik_yrp_3secim.svg" type="image/svg+xml"></object>
-  </div>
-  <div class="slide-legend">
-    <span class="legend-item"><span class="legend-title">Sapma (puan)</span><span class="legend-grad grad-div"></span></span>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Yeniden Refah · 2024 İlçe</span><span class="slide-folio">16 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Yeniden Refah — 2024 İlçe Belediye Başkanlığı</h2>
+      <p class="slide-sub">Mahalle bazlı oy oranı; Pendik ortalaması <strong style="font-style:normal;color:var(--accent);">%3.98</strong>.</p>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/pendik_yrp_2024_ilce.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend">
+      <span class="legend-grad-wrap">
+        <span class="legend-grad grad-div"></span>
+        <span class="legend-grad-axis"><span>−3.1</span><span>−1.5</span><span>0</span><span>+1.5</span><span>+3.1</span></span>
+      </span>
+      <span class="legend-item"><span class="legend-cap">puan · Pendik ortalamasına göre sapma</span></span>
+    </div>
   </div>
 </section>
 
-<!-- ========== 15) Sağ-Sol winner ========== -->
+<!-- ========== 16c) YRP 2024 — Belediye Meclisi ========== -->
 <section class="slide">
-  <h2 class="slide-title">Sağ — Sol Mahalle Hâkimiyeti (2023 MV, Birinci Blok)</h2>
-  <p class="slide-sub">Sağ blok: AKP+MHP+İYİ+YRP+ZP+BBP+ANAP+...   ·   Sol blok: CHP+YSP+TİP+Memleket+...</p>
-  <div class="slide-body">
-    <object data="_v2_assets/pendik_sag_sol_winner.svg" type="image/svg+xml"></object>
-  </div>
-  <div class="slide-legend">
-    <span class="legend-item"><span class="legend-swatch akp"></span>SAĞ kazandı</span>
-    <span class="legend-item"><span class="legend-swatch chp"></span>SOL kazandı</span>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Yeniden Refah · 2024 Meclis</span><span class="slide-folio">17 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Yeniden Refah — 2024 Belediye Meclisi</h2>
+      <p class="slide-sub">Mahalle bazlı oy oranı; Pendik ortalaması <strong style="font-style:normal;color:var(--accent);">%4.52</strong>.</p>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/pendik_yrp_2024_meclis.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend">
+      <span class="legend-grad-wrap">
+        <span class="legend-grad grad-div"></span>
+        <span class="legend-grad-axis"><span>−3.1</span><span>−1.5</span><span>0</span><span>+1.5</span><span>+3.1</span></span>
+      </span>
+      <span class="legend-item"><span class="legend-cap">puan · Pendik ortalamasına göre sapma</span></span>
+    </div>
   </div>
 </section>
 
-<!-- ========== 16) Sağ-Sol LISA ========== -->
+<!-- ========== 17) Sağ-Sol winner ========== -->
 <section class="slide">
-  <h2 class="slide-title">Sağ ve Sol Oranı — LISA Mahalle Kümeleri</h2>
-  <p class="slide-sub">SAĞ Moran I = 0.X · SOL Moran I = 0.X — kuzey-güney polarizasyon</p>
-  <div class="slide-body">
-    <object data="_v2_assets/pendik_sag_sol_lisa.svg" type="image/svg+xml"></object>
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Sağ — Sol Hâkimiyeti</span><span class="slide-folio">16 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Sağ — Sol Mahalle Hâkimiyeti <span style="color:var(--muted);font-style:italic;font-weight:400;">(2023 MV, Birinci Blok)</span></h2>
+      <p class="slide-sub"><strong style="font-style:normal;color:var(--ink);">Sağ blok:</strong> AKP + MHP + İYİ + YRP + ZP + BBP + ANAP… &nbsp;·&nbsp; <strong style="font-style:normal;color:var(--ink);">Sol blok:</strong> CHP + YSP + TİP + Memleket…</p>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/pendik_sag_sol_winner.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend">
+      <span class="legend-item"><span class="legend-swatch akp"></span>SAĞ kazandı</span>
+      <span class="legend-item"><span class="legend-swatch chp"></span>SOL kazandı</span>
+    </div>
   </div>
-  <div class="slide-legend">
-    <span class="legend-item"><span class="legend-swatch lisa-hh"></span>High-High</span>
-    <span class="legend-item"><span class="legend-swatch lisa-ll"></span>Low-Low</span>
-    <span class="legend-item"><span class="legend-swatch lisa-hl"></span>High-Low</span>
-    <span class="legend-item"><span class="legend-swatch lisa-lh"></span>Low-High</span>
-    <span class="legend-item"><span class="legend-swatch lisa-ns"></span>Anlamsız</span>
+</section>
+
+<!-- ========== 18) Sağ-Sol LISA ========== -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-head"><span class="slide-eyebrow">Sağ — Sol · LISA Kümeleri</span><span class="slide-folio">17 / 17</span></div>
+    <div class="slide-headblock">
+      <h2 class="slide-title">Sağ ve Sol Oranı — LISA Mahalle Kümeleri</h2>
+      <p class="slide-sub">SAĞ Moran I = 0.X · SOL Moran I = 0.X — kuzey-güney polarizasyon.</p>
+    </div>
+    <div class="slide-body">
+      <object data="_v2_assets/pendik_sag_sol_lisa.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend">
+      <span class="legend-item"><span class="legend-swatch lisa-hh"></span>High-High</span>
+      <span class="legend-item"><span class="legend-swatch lisa-ll"></span>Low-Low</span>
+      <span class="legend-item"><span class="legend-swatch lisa-hl"></span>High-Low</span>
+      <span class="legend-item"><span class="legend-swatch lisa-lh"></span>Low-High</span>
+      <span class="legend-item"><span class="legend-swatch lisa-ns"></span>Anlamsız</span>
+    </div>
   </div>
 </section>
 
@@ -319,7 +797,7 @@
     hash: true,
     slideNumber: 'c/t',
     transition: 'fade',
-    transitionSpeed: 'default',
+    transitionSpeed: 'fast',
     backgroundTransition: 'fade',
     width: 1600,
     height: 1000,
@@ -327,7 +805,6 @@
     center: false,
   });
 
-  // Kapakta kontrolleri ve sayfa numarasını gizle
   function syncCoverState() {
     var cur = Reveal.getCurrentSlide();
     if (cur && cur.classList.contains('cover')) {
