@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>PENDİK Seçim Analizi</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css" id="theme">
+<style>
+  .reveal h1, .reveal h2, .reveal h3 { text-transform: none; }
+  .reveal section { font-size: 28px; }
+  .reveal table { font-size: 0.7em; margin: 0 auto; border-collapse: collapse; }
+  .reveal th, .reveal td { padding: 6px 14px; border-bottom: 1px solid #ddd; text-align: left; }
+  .reveal th { background: #f4f4f4; }
+  .reveal td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .map-frame { width: 100%; height: 600px; border: 1px solid #ddd; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-2 .map-frame { height: 480px; }
+  .meta { color: #888; font-size: 0.65em; }
+  .key { color: #1f77b4; font-weight: 600; }
+  .footer { position: absolute; bottom: 14px; right: 24px; font-size: 0.5em; color: #aaa; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<section>
+  <h1>PENDİK</h1>
+  <h3>Mahalle Bazlı Seçim Analizi</h3>
+  <p class="meta">2018 — 2024 · 12 seçim · 37 mahalle · 1,592 sandık</p>
+</section>
+
+<section>
+  <h2>Veri Kaynağı</h2>
+  <ul>
+    <li>YSK ham seçim CSV'leri (22 dosya, 2014-2024)</li>
+    <li>Mahalle düzeyi sandık verisi: <span class="key">il_ADI, ilce_ADI, muhtarlik_ADI, sandik_NO, variable, value</span></li>
+    <li>Türkiye mahalle shapefile (yeni.shp, EPSG:3035, 51K mahalle)</li>
+  </ul>
+  <p class="meta">PENDİK filtre çıktısı: 41 polygon SHP + 19 seçim xlsx</p>
+</section>
+
+<section>
+  <h2>Pipeline</h2>
+  <pre style="font-size: 0.55em; line-height: 1.4;"><code>secim-il-ilce-filtre   →  PENDİK/Harita Teknik Dosya/*.shp + Secim/*.xlsx
+                                ↓
+secim-shp-svg          →  PENDİK.svg (interaktif harita)
+                                ↓
+secim-mahalle-match    →  eslesme/summary.csv + unmatched_*.csv
+                                ↓
+secim-oy-orani         →  oranlar/oran_*.csv (mahalle × parti)
+                                ↓
+secim-parti-harita     →  haritalar/{parti}_{secim}.svg (choropleth)</code></pre>
+  <p class="meta">5 skill, modüler, ilçe parametrik</p>
+</section>
+
+<section>
+  <h2>İlçe Haritası</h2>
+  <object class="map-frame" data="Harita Teknik Dosya/PENDİK.svg" type="image/svg+xml"></object>
+  <p class="meta">Mahalle üzerine gel: ad ipucu görünür</p>
+</section>
+
+<section>
+  <h2>Mahalle Eşleşme</h2>
+  <table>
+    <thead><tr><th>Yıl</th><th>Seçim</th><th class="num">Eşleşen / Toplam</th><th class="num">Oran</th></tr></thead>
+    <tbody>
+      <tr><td>2018</td><td>Cumhurbaşkanı</td><td class="num">36 / 37</td><td class="num">%97.3</td></tr>
+      <tr><td>2018</td><td>Milletvekili</td><td class="num">36 / 37</td><td class="num">%97.3</td></tr>
+      <tr><td>2019</td><td>Belediye Başkanlığı</td><td class="num">36 / 37</td><td class="num">%97.3</td></tr>
+      <tr><td>2019</td><td>BB Başkanlığı</td><td class="num">36 / 37</td><td class="num">%97.3</td></tr>
+      <tr><td>2023</td><td>Cumhurbaşkanı (1+2)</td><td class="num">36 / 37</td><td class="num">%97.3</td></tr>
+      <tr><td>2023</td><td>Milletvekili</td><td class="num">36 / 37</td><td class="num">%97.3</td></tr>
+      <tr><td>2024</td><td>Belediye + BB</td><td class="num">36 / 37</td><td class="num">%97.3</td></tr>
+    </tbody>
+  </table>
+  <p class="meta">Eşleşmeyenler: <span class="key">ÖMERLİ BARAJI</span> (haritada, sandık yok) · <span class="key">KARTAL H TİPİ CEZA İNFAZ KURUMU</span> (sandıkta, polygon dışı)</p>
+  <p class="meta">→ Gerçek mahalle eşleşmesi <strong>%100</strong></p>
+</section>
+
+<section>
+  <h2>2024 Büyükşehir — Pendik Geneli</h2>
+  <table>
+    <thead><tr><th>Parti</th><th class="num">Oran</th></tr></thead>
+    <tbody>
+      <tr><td>CHP</td><td class="num">%45.36</td></tr>
+      <tr><td>AK PARTİ</td><td class="num">%44.76</td></tr>
+      <tr><td>YENİDEN REFAH</td><td class="num">%3.47</td></tr>
+      <tr><td>ZAFER PARTİSİ</td><td class="num">%2.47</td></tr>
+      <tr><td>DEM Parti</td><td class="num">%1.30</td></tr>
+      <tr><td>SAADET</td><td class="num">%0.81</td></tr>
+      <tr><td>İYİ PARTİ</td><td class="num">%0.67</td></tr>
+    </tbody>
+  </table>
+  <p class="meta">37 mahalle, 1,592 sandık ortalaması</p>
+</section>
+
+<section>
+  <h2>İki Büyük Parti — Mahalle Dağılımı</h2>
+  <div class="grid-2">
+    <div>
+      <h3 style="color: #d62728;">CHP</h3>
+      <object class="map-frame" data="haritalar/2024_BÜYÜKŞEHİR_BELEDİYE_BAŞKANLIĞI_CHP.svg" type="image/svg+xml"></object>
+    </div>
+    <div>
+      <h3 style="color: #fdb924;">AK PARTİ</h3>
+      <object class="map-frame" data="haritalar/2024_BÜYÜKŞEHİR_BELEDİYE_BAŞKANLIĞI_AK_PARTİ.svg" type="image/svg+xml"></object>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Yeniden Refah Partisi</h2>
+  <object class="map-frame" data="haritalar/2024_BÜYÜKŞEHİR_BELEDİYE_BAŞKANLIĞI_YENİDEN_REFAH.svg" type="image/svg+xml"></object>
+  <p class="meta">Pendik geneli %3.47 · max mahalle %5.3</p>
+</section>
+
+<section>
+  <h2>Sonraki Adımlar</h2>
+  <ul>
+    <li>Tüm İstanbul ilçelerine pipeline'ı uygula</li>
+    <li>Yıllar arası değişim haritası (2019 → 2024 swing)</li>
+    <li>Endeksa gelir kategorisi join (3-) Taşra-Gelir devamı)</li>
+    <li>Mahalle yaş/cinsiyet kırılımı (Sandık/ klasörü)</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Teşekkürler</h2>
+  <p class="meta">PENDİK pilot · skill-tabanlı pipeline · Türkiye geneli ölçeklenebilir</p>
+</section>
+
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    transition: 'slide',
+    width: 1280,
+    height: 800,
+  });
+</script>
+</body>
+</html>
