@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1700 720" preserveAspectRatio="xMidYMid meet">
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; fill: #1a1a1a; }
+.title { font-size: 24px; font-weight: 600; }
+.cat { font-size: 16px; font-weight: 500; }
+.val { font-size: 15px; font-weight: 600; fill: #1a1a1a; }
+.pct { font-size: 13px; fill: #666; }
+</style>
+
+<rect x="280" y="50.0" width="8.5" height="152.5" rx="4" fill="#8b6f4e"/>
+<text x="266" y="131.2" class="cat" text-anchor="end">Taşra</text>
+<text x="298.5" y="131.2" class="val">3,167 <tspan class="pct">(%0.6)</tspan></text>
+<rect x="280" y="253.3" width="1240.0" height="152.5" rx="4" fill="#e63946"/>
+<text x="266" y="334.6" class="cat" text-anchor="end">Düşük gelir</text>
+<text x="1530.0" y="334.6" class="val">460,646 <tspan class="pct">(%84.4)</tspan></text>
+<rect x="280" y="456.7" width="220.0" height="152.5" rx="4" fill="#f4a261"/>
+<text x="266" y="537.9" class="cat" text-anchor="end">Orta gelir</text>
+<text x="510.0" y="537.9" class="val">81,721 <tspan class="pct">(%15.0)</tspan></text>
+</svg>

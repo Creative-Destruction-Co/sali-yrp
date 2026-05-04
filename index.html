@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Pendik 2023 Milletvekili — v2</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css" id="theme">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #666;
+    --accent: #1a3a52;
+  }
+  body, .reveal { background: #fff; }
+  .reveal h1, .reveal h2, .reveal h3 { text-transform: none; color: var(--ink); }
+  .reveal section { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+
+  /* Slayt çerçevesi: dikey 3 bant — başlık, gövde, lejant. Reveal'in display:block override için yüksek specificity. */
+  .reveal .slides > section.slide {
+    display: flex !important;
+    flex-direction: column;
+    padding: 18px 28px;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  .slide-title { font-size: 30px; font-weight: 700; letter-spacing: -0.4px; line-height: 1.15; margin: 0 0 4px 0; }
+  .slide-sub { font-size: 16px; color: var(--muted); margin: 0 0 10px 0; }
+  .slide-body { flex: 1 1 auto; min-height: 0; display: flex; align-items: center; justify-content: center; }
+  .slide-body > object,
+  .slide-body > svg,
+  .slide-body > .frame { width: 100%; height: 100%; border: none; shape-rendering: geometricPrecision; }
+  .slide-legend {
+    flex: 0 0 auto;
+    display: flex; flex-wrap: wrap; gap: 14px 26px;
+    align-items: center; justify-content: center;
+    padding-top: 10px;
+    font-size: 18px; color: var(--ink);
+  }
+  .legend-item { display: inline-flex; align-items: center; gap: 8px; }
+  .legend-swatch { display: inline-block; width: 22px; height: 14px; border-radius: 2px; box-shadow: 0 0 0 0.5px rgba(0,0,0,.2); }
+  .legend-grad { display: inline-block; height: 14px; width: 280px; border-radius: 2px; box-shadow: 0 0 0 0.5px rgba(0,0,0,.2); }
+  .legend-cap { font-size: 14px; color: var(--muted); margin-left: 6px; }
+  .legend-title { font-size: 16px; font-weight: 600; margin-right: 4px; }
+
+  /* Kapak - center:false olduğu için manuel dikey ortalama */
+  .reveal .slides > section.cover {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0 60px;
+    box-sizing: border-box;
+  }
+  .cover h1 { font-size: 64px; font-weight: 800; letter-spacing: -1px; margin: 0; text-align: center; line-height: 1.1; }
+  .cover .accent { display: block; height: 5px; width: 240px; margin: 28px auto; background: linear-gradient(90deg, #ffb000 0 33%, #e63946 33% 66%, #6c4099 66% 100%); border-radius: 3px; }
+  .cover h3 { font-size: 26px; font-weight: 500; color: #444; margin: 0; text-align: center; }
+  .cover .meta { font-size: 16px; color: var(--muted); margin-top: 18px; text-align: center; }
+  /* Kapakta reveal kontrolleri ve sayfa numarası gizli */
+  .reveal .slides section.cover ~ * { /* not used */ }
+  body.cover-active .reveal .controls,
+  body.cover-active .reveal .progress,
+  body.cover-active .reveal .slide-number { opacity: 0 !important; pointer-events: none; }
+  .reveal .controls { color: rgba(0,0,0,.35); }
+  .reveal .slide-number { background: transparent; color: rgba(0,0,0,.4); font-size: 12px; }
+
+  /* Zoom animasyon slaytı (TR ilçe → Pendik) */
+  .reveal .slides > section.zoom-slide { padding: 0 !important; display: block !important; }
+  .reveal section.zoom-slide .slide-title { position: absolute; top: 14px; left: 28px; right: 28px; z-index: 5; pointer-events: none; }
+  .layer-stack { position: relative; width: 100%; height: 100%; overflow: hidden; }
+  .layer-stack > object { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; shape-rendering: geometricPrecision; }
+  .layer-ilce-zoom { z-index: 1; transform: scale(1); }
+  .layer-pendik-auto { z-index: 2; opacity: 0; }
+  .reveal section.zoom-slide.present .layer-ilce-zoom {
+    animation:
+      zoom-tr-istanbul-pendik 7s cubic-bezier(0.5, 0, 0.5, 1) forwards,
+      fade-out-ilce 1.2s ease-in-out 6.8s forwards;
+  }
+  .reveal section.zoom-slide.present .layer-pendik-auto {
+    animation: fade-pendik 1.2s ease-in-out 6.8s forwards;
+  }
+  @keyframes zoom-tr-istanbul-pendik {
+    0%   { transform: scale(1);  transform-origin: 18.46% 23.45%; }
+    45%  { transform: scale(5);  transform-origin: 18.46% 23.45%; }
+    100% { transform: scale(30); transform-origin: 20.45% 26.16%; }
+  }
+  @keyframes fade-pendik { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fade-out-ilce { from { opacity: 1; } to { opacity: 0; } }
+
+  /* Renkler — parti paleti */
+  .akp { background: #ffb000; }
+  .chp { background: #e63946; }
+  .ysp { background: #6c4099; }
+  .mhp { background: #d2691e; }
+  .iyi { background: #00a4d6; }
+  .yrp { background: #009b6f; }
+
+  /* Diverging gradient (kırmızı ← beyaz → mavi) */
+  .grad-div { background: linear-gradient(90deg, #b2182b 0%, #ef8a62 25%, #fddbc7 45%, #ffffff 50%, #d1e5f0 55%, #67a9cf 75%, #2166ac 100%); }
+  /* Tek-mavi (memleket) */
+  .grad-blue { background: linear-gradient(90deg, #ffffff, #0a3c8c); }
+  /* LISA */
+  .lisa-hh { background: #d62728; }
+  .lisa-ll { background: #1f77b4; }
+  .lisa-hl { background: #ff9896; }
+  .lisa-lh { background: #aec7e8; }
+  .lisa-ns { background: #dddddd; }
+  /* Mahalle tip */
+  .tip-tasra { background: #8b6f4e; }
+  .tip-low { background: #e63946; }
+  .tip-mid { background: #f4a261; }
+  .tip-high { background: #2a9d8f; }
+  .tip-top { background: #264653; }
+  .tip-na { background: #d8dde0; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<!-- ========== 1) KAPAK ========== -->
+<section class="cover" data-state="cover">
+  <h1>Pendik — Mahalle Bazlı<br>Seçim Analizi</h1>
+  <span class="accent"></span>
+  <h3>2015 — 2024 · 41 mahalle · ~545 bin seçmen</h3>
+  <div class="meta">2023 Milletvekili Genel Seçimi — Birinci Parti haritası ile başlar</div>
+</section>
+
+<!-- ========== 2) TR İL — Birinci Parti ========== -->
+<section class="slide">
+  <h2 class="slide-title">2023 Milletvekili — Türkiye İl Bazında Birinci Parti</h2>
+  <div class="slide-body">
+    <object data="_v2_assets/tr_il_winner.svg" type="image/svg+xml"></object>
+  </div>
+  <div class="slide-legend">
+    <span class="legend-item"><span class="legend-swatch akp"></span>AK PARTİ <span class="legend-cap">(58 il)</span></span>
+    <span class="legend-item"><span class="legend-swatch ysp"></span>Yeşil Sol Parti <span class="legend-cap">(13 il)</span></span>
+    <span class="legend-item"><span class="legend-swatch chp"></span>CHP <span class="legend-cap">(10 il)</span></span>
+  </div>
+</section>
+
+<!-- ========== 3) TR İLÇE — Birinci Parti ========== -->
+<section class="slide">
+  <h2 class="slide-title">2023 Milletvekili — Türkiye İlçe Bazında Birinci Parti</h2>
+  <div class="slide-body">
+    <object data="_v2_assets/tr_ilce_winner.svg" type="image/svg+xml"></object>
+  </div>
+  <div class="slide-legend">
+    <span class="legend-item"><span class="legend-swatch akp"></span>AK PARTİ</span>
+    <span class="legend-item"><span class="legend-swatch chp"></span>CHP</span>
+    <span class="legend-item"><span class="legend-swatch ysp"></span>Yeşil Sol</span>
+    <span class="legend-item"><span class="legend-swatch mhp"></span>MHP</span>
+    <span class="legend-item"><span class="legend-swatch iyi"></span>İYİ Parti</span>
+  </div>
+</section>
+
+<!-- ========== 4) ZOOM: TR İlçe → Pendik ========== -->
+<section class="slide zoom-slide">
+  <h2 class="slide-title">Türkiye → İstanbul → Pendik</h2>
+  <div class="layer-stack">
+    <object class="layer-ilce-zoom" data="_v2_assets/tr_ilce_winner.svg" type="image/svg+xml"></object>
+    <object class="layer-pendik-auto" data="_v2_assets/pendik_winner_2023mv.svg" type="image/svg+xml"></object>
+  </div>
+</section>
+
+<!-- ========== 5) Pendik mahalle tip ========== -->
+<section class="slide">
+  <h2 class="slide-title">Pendik — Mahalle Tipleri (Endeksa gelir + Taşra)</h2>
+  <div class="slide-body">
+    <object data="_v2_assets/pendik_tip.svg" type="image/svg+xml"></object>
+  </div>
+  <div class="slide-legend">
+    <span class="legend-item"><span class="legend-swatch tip-tasra"></span>Taşra</span>
+    <span class="legend-item"><span class="legend-swatch tip-low"></span>Düşük gelir</span>
+    <span class="legend-item"><span class="legend-swatch tip-mid"></span>Orta gelir</span>
+    <span class="legend-item"><span class="legend-swatch tip-high"></span>Yüksek gelir</span>
+    <span class="legend-item"><span class="legend-swatch tip-top"></span>En yüksek</span>
+    <span class="legend-item"><span class="legend-swatch tip-na"></span>Veri yok</span>
+  </div>
+</section>
+
+<!-- ========== 6) Gelir bar ========== -->
+<section class="slide">
+  <h2 class="slide-title">Pendik — Gelir Grubuna Göre Seçmen Dağılımı</h2>
+  <p class="slide-sub">Mahalle bazında gelir grubu (Endeksa) × seçmen sayısı (sandık kütüğü)</p>
+  <div class="slide-body">
+    <object data="_v2_assets/pendik_gelir_bar.svg" type="image/svg+xml"></object>
+  </div>
+</section>
+
+<!-- ========== 7) Memleket harita (TR ilçe choropleth) ========== -->
+<section class="slide">
+  <h2 class="slide-title">Pendik'te Yaşayan Seçmenlerin Memleket Dağılımı</h2>
+  <p class="slide-sub">Sandık kütüğü "Nüfus İli × İlçesi" — Türkiye ilçe haritası üzerinde yüzde</p>
+  <div class="slide-body">
+    <object data="_v2_assets/memleket_harita.svg" type="image/svg+xml"></object>
+  </div>
+  <div class="slide-legend">
+    <span class="legend-item"><span class="legend-title">% Pendikli</span><span class="legend-grad grad-blue"></span><span class="legend-cap">0% → en yüksek</span></span>
+  </div>
+</section>
+
+<!-- ========== 8) Bölge bar ========== -->
+<section class="slide">
+  <h2 class="slide-title">Pendik — Memleket Bölgesine Göre Seçmen Dağılımı</h2>
+  <div class="slide-body">
+    <object data="_v2_assets/pendik_bolge_bar.svg" type="image/svg+xml"></object>
+  </div>
+</section>
+
+<!-- ========== 9) Gelir × Bölge ========== -->
+<section class="slide">
+  <h2 class="slide-title">Pendik — Gelir Grubu × Memleket Bölgesi</h2>
+  <p class="slide-sub">Her panel kendi gelir grubu içindeki bölge yüzdesi (kolon toplamı %100)</p>
+  <div class="slide-body">
+    <object data="_v2_assets/pendik_gelir_x_bolge.svg" type="image/svg+xml"></object>
+  </div>
+</section>
+
+<!-- ========== 10) Memleket LISA ========== -->
+<section class="slide">
+  <h2 class="slide-title">Memleket Bölgeleri — LISA Mekânsal Otokorelasyonu</h2>
+  <p class="slide-sub">Her panel: bölgenin yoğunlaştığı mahalleler (HH) ve seyrekleştiği mahalleler (LL)</p>
+  <div class="slide-body">
+    <object data="_v2_assets/pendik_memleket_lisa.svg" type="image/svg+xml"></object>
+  </div>
+  <div class="slide-legend">
+    <span class="legend-item"><span class="legend-swatch lisa-hh"></span>High-High <span class="legend-cap">yoğun küme</span></span>
+    <span class="legend-item"><span class="legend-swatch lisa-ll"></span>Low-Low <span class="legend-cap">seyrek küme</span></span>
+    <span class="legend-item"><span class="legend-swatch lisa-hl"></span>High-Low</span>
+    <span class="legend-item"><span class="legend-swatch lisa-lh"></span>Low-High</span>
+    <span class="legend-item"><span class="legend-swatch lisa-ns"></span>Anlamsız (p &gt; 0.05)</span>
+  </div>
+</section>
+
+<!-- ========== 11) AKP 2018→2023 swing ========== -->
+<section class="slide">
+  <h2 class="slide-title">AK Parti — 2018→2023 Mahalle Sapması (İlçe Ortalamasına Göre)</h2>
+  <p class="slide-sub">Pendik ilçe ortalama swing: −7.60 puan · 0 = ilçe ile aynı oranda kayıp</p>
+  <div class="slide-body">
+    <object data="_v2_assets/pendik_akp_swing.svg" type="image/svg+xml"></object>
+  </div>
+  <div class="slide-legend">
+    <span class="legend-item"><span class="legend-title">Sapma (puan)</span><span class="legend-grad grad-div"></span></span>
+    <span class="legend-item"><span class="legend-cap">Kırmızı: ilçeden çok kaybetti · Mavi: ilçeden az kaybetti / kazandı</span></span>
+  </div>
+</section>
+
+<!-- ========== 12) Saadet 2015K→2018 swing ========== -->
+<section class="slide">
+  <h2 class="slide-title">Saadet — 2015 Kasım → 2018 Mahalle Sapması</h2>
+  <p class="slide-sub">İlçe ortalamasına göre puan farkı (winsorize 5–95 ile uçlar yumuşatıldı)</p>
+  <div class="slide-body">
+    <object data="_v2_assets/pendik_saadet_swing.svg" type="image/svg+xml"></object>
+  </div>
+  <div class="slide-legend">
+    <span class="legend-item"><span class="legend-title">Sapma (puan)</span><span class="legend-grad grad-div"></span></span>
+    <span class="legend-item"><span class="legend-cap">Kırmızı: ilçeden çok kaybetti · Mavi: ilçeden çok kazandı</span></span>
+  </div>
+</section>
+
+<!-- ========== 13) Saadet 4 dönem ========== -->
+<section class="slide">
+  <h2 class="slide-title">Saadet — Dört Dönem Mahalle Sapması (2011, 2015 Haziran, 2015 Kasım, 2018)</h2>
+  <div class="slide-body">
+    <object data="_v2_assets/pendik_saadet_4donem.svg" type="image/svg+xml"></object>
+  </div>
+  <div class="slide-legend">
+    <span class="legend-item"><span class="legend-title">Mahalle − İlçe ortalaması (puan)</span><span class="legend-grad grad-div"></span></span>
+  </div>
+</section>
+
+<!-- ========== 14) YRP 2024 3 seçim ========== -->
+<section class="slide">
+  <h2 class="slide-title">Yeniden Refah — 2024 Üç Seçim Karşılaştırması</h2>
+  <p class="slide-sub">İBB Başkanlığı · İlçe Belediye Başkanlığı · Belediye Meclisi — Pendik ortalamasına göre sapma</p>
+  <div class="slide-body">
+    <object data="_v2_assets/pendik_yrp_3secim.svg" type="image/svg+xml"></object>
+  </div>
+  <div class="slide-legend">
+    <span class="legend-item"><span class="legend-title">Sapma (puan)</span><span class="legend-grad grad-div"></span></span>
+  </div>
+</section>
+
+<!-- ========== 15) Sağ-Sol winner ========== -->
+<section class="slide">
+  <h2 class="slide-title">Sağ — Sol Mahalle Hâkimiyeti (2023 MV, Birinci Blok)</h2>
+  <p class="slide-sub">Sağ blok: AKP+MHP+İYİ+YRP+ZP+BBP+ANAP+...   ·   Sol blok: CHP+YSP+TİP+Memleket+...</p>
+  <div class="slide-body">
+    <object data="_v2_assets/pendik_sag_sol_winner.svg" type="image/svg+xml"></object>
+  </div>
+  <div class="slide-legend">
+    <span class="legend-item"><span class="legend-swatch akp"></span>SAĞ kazandı</span>
+    <span class="legend-item"><span class="legend-swatch chp"></span>SOL kazandı</span>
+  </div>
+</section>
+
+<!-- ========== 16) Sağ-Sol LISA ========== -->
+<section class="slide">
+  <h2 class="slide-title">Sağ ve Sol Oranı — LISA Mahalle Kümeleri</h2>
+  <p class="slide-sub">SAĞ Moran I = 0.X · SOL Moran I = 0.X — kuzey-güney polarizasyon</p>
+  <div class="slide-body">
+    <object data="_v2_assets/pendik_sag_sol_lisa.svg" type="image/svg+xml"></object>
+  </div>
+  <div class="slide-legend">
+    <span class="legend-item"><span class="legend-swatch lisa-hh"></span>High-High</span>
+    <span class="legend-item"><span class="legend-swatch lisa-ll"></span>Low-Low</span>
+    <span class="legend-item"><span class="legend-swatch lisa-hl"></span>High-Low</span>
+    <span class="legend-item"><span class="legend-swatch lisa-lh"></span>Low-High</span>
+    <span class="legend-item"><span class="legend-swatch lisa-ns"></span>Anlamsız</span>
+  </div>
+</section>
+
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'fade',
+    transitionSpeed: 'default',
+    backgroundTransition: 'fade',
+    width: 1600,
+    height: 1000,
+    margin: 0.02,
+    center: false,
+  });
+
+  // Kapakta kontrolleri ve sayfa numarasını gizle
+  function syncCoverState() {
+    var cur = Reveal.getCurrentSlide();
+    if (cur && cur.classList.contains('cover')) {
+      document.body.classList.add('cover-active');
+    } else {
+      document.body.classList.remove('cover-active');
+    }
+  }
+  Reveal.on('ready', syncCoverState);
+  Reveal.on('slidechanged', syncCoverState);
+</script>
+</body>
+</html>
