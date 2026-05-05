@@ -1,103 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1950 800" preserveAspectRatio="xMidYMid meet">
-<style>
-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; fill: #1a1a1a; }
-.title { font-size: 22px; font-weight: 700; }
-.subtitle { font-size: 14px; fill: #555; }
-.panel-title { font-size: 26px; font-weight: 600; }
-.panel-sub { font-size: 22px; fill: #666; }
-.cat { font-size: 22px; }
-.val { font-size: 22px; font-weight: 600; }
-.source { font-size: 22px; fill: #888; }
-</style>
-
-
-<text x="24.0" y="64" class="panel-title">Taşra</text>
-<text x="24.0" y="92" class="panel-sub">n = 3,167 seçmen</text>
-<text x="193.0" y="148" class="cat" text-anchor="end">Pendik</text>
-<rect x="199.0" y="120" width="205.8" height="56" rx="2" fill="#1a3a52"/>
-<text x="411.3" y="148" class="val">27.3</text>
-<text x="193.0" y="218" class="cat" text-anchor="end">İstanbul</text>
-<rect x="199.0" y="190" width="47.0" height="56" rx="2" fill="#1a3a52"/>
-<text x="252.5" y="218" class="val">6.2</text>
-<text x="193.0" y="288" class="cat" text-anchor="end">Marmara</text>
-<rect x="199.0" y="260" width="39.4" height="56" rx="2" fill="#1a3a52"/>
-<text x="244.9" y="288" class="val">5.2</text>
-<text x="193.0" y="358" class="cat" text-anchor="end">Karadeniz</text>
-<rect x="199.0" y="330" width="292.6" height="56" rx="2" fill="#1a3a52"/>
-<text x="498.1" y="358" class="val">38.8</text>
-<text x="193.0" y="428" class="cat" text-anchor="end">Doğu Anadolu</text>
-<rect x="199.0" y="400" width="91.4" height="56" rx="2" fill="#1a3a52"/>
-<text x="296.9" y="428" class="val">12.1</text>
-<text x="193.0" y="498" class="cat" text-anchor="end">İç Anadolu</text>
-<rect x="199.0" y="470" width="37.4" height="56" rx="2" fill="#1a3a52"/>
-<text x="242.9" y="498" class="val">5.0</text>
-<text x="193.0" y="568" class="cat" text-anchor="end">Güneydoğu Anadolu</text>
-<rect x="199.0" y="540" width="20.4" height="56" rx="2" fill="#1a3a52"/>
-<text x="225.9" y="568" class="val">2.7</text>
-<text x="193.0" y="638" class="cat" text-anchor="end">Akdeniz</text>
-<rect x="199.0" y="610" width="9.6" height="56" rx="2" fill="#1a3a52"/>
-<text x="215.1" y="638" class="val">1.3</text>
-<text x="193.0" y="708" class="cat" text-anchor="end">Ege</text>
-<rect x="199.0" y="680" width="10.2" height="56" rx="2" fill="#1a3a52"/>
-<text x="215.7" y="708" class="val">1.4</text>
-<text x="724.3" y="64" class="panel-title">Düşük gelir</text>
-<text x="724.3" y="92" class="panel-sub">n = 460,646 seçmen</text>
-<text x="893.3" y="148" class="cat" text-anchor="end">Pendik</text>
-<rect x="899.3" y="120" width="29.7" height="56" rx="2" fill="#1a3a52"/>
-<text x="935.5" y="148" class="val">3.9</text>
-<text x="893.3" y="218" class="cat" text-anchor="end">İstanbul</text>
-<rect x="899.3" y="190" width="30.3" height="56" rx="2" fill="#1a3a52"/>
-<text x="936.1" y="218" class="val">4.0</text>
-<text x="893.3" y="288" class="cat" text-anchor="end">Marmara</text>
-<rect x="899.3" y="260" width="53.8" height="56" rx="2" fill="#1a3a52"/>
-<text x="959.6" y="288" class="val">7.1</text>
-<text x="893.3" y="358" class="cat" text-anchor="end">Karadeniz</text>
-<rect x="899.3" y="330" width="297.4" height="56" rx="2" fill="#1a3a52"/>
-<text x="1203.2" y="358" class="val">39.5</text>
-<text x="893.3" y="428" class="cat" text-anchor="end">Doğu Anadolu</text>
-<rect x="899.3" y="400" width="162.4" height="56" rx="2" fill="#1a3a52"/>
-<text x="1068.2" y="428" class="val">21.6</text>
-<text x="893.3" y="498" class="cat" text-anchor="end">İç Anadolu</text>
-<rect x="899.3" y="470" width="114.3" height="56" rx="2" fill="#1a3a52"/>
-<text x="1020.1" y="498" class="val">15.2</text>
-<text x="893.3" y="568" class="cat" text-anchor="end">Güneydoğu Anadolu</text>
-<rect x="899.3" y="540" width="26.9" height="56" rx="2" fill="#1a3a52"/>
-<text x="932.7" y="568" class="val">3.6</text>
-<text x="893.3" y="638" class="cat" text-anchor="end">Akdeniz</text>
-<rect x="899.3" y="610" width="18.9" height="56" rx="2" fill="#1a3a52"/>
-<text x="924.7" y="638" class="val">2.5</text>
-<text x="893.3" y="708" class="cat" text-anchor="end">Ege</text>
-<rect x="899.3" y="680" width="20.1" height="56" rx="2" fill="#1a3a52"/>
-<text x="925.9" y="708" class="val">2.7</text>
-<text x="1423.7" y="64" class="panel-title">Orta gelir</text>
-<text x="1423.7" y="92" class="panel-sub">n = 81,721 seçmen</text>
-<text x="1592.7" y="148" class="cat" text-anchor="end">Pendik</text>
-<rect x="1598.7" y="120" width="25.2" height="56" rx="2" fill="#1a3a52"/>
-<text x="1630.4" y="148" class="val">3.4</text>
-<text x="1592.7" y="218" class="cat" text-anchor="end">İstanbul</text>
-<rect x="1598.7" y="190" width="83.8" height="56" rx="2" fill="#1a3a52"/>
-<text x="1689.0" y="218" class="val">11.1</text>
-<text x="1592.7" y="288" class="cat" text-anchor="end">Marmara</text>
-<rect x="1598.7" y="260" width="72.2" height="56" rx="2" fill="#1a3a52"/>
-<text x="1677.4" y="288" class="val">9.6</text>
-<text x="1592.7" y="358" class="cat" text-anchor="end">Karadeniz</text>
-<rect x="1598.7" y="330" width="240.6" height="56" rx="2" fill="#1a3a52"/>
-<text x="1845.8" y="358" class="val">31.9</text>
-<text x="1592.7" y="428" class="cat" text-anchor="end">Doğu Anadolu</text>
-<rect x="1598.7" y="400" width="126.2" height="56" rx="2" fill="#1a3a52"/>
-<text x="1731.4" y="428" class="val">16.7</text>
-<text x="1592.7" y="498" class="cat" text-anchor="end">İç Anadolu</text>
-<rect x="1598.7" y="470" width="108.4" height="56" rx="2" fill="#1a3a52"/>
-<text x="1713.6" y="498" class="val">14.4</text>
-<text x="1592.7" y="568" class="cat" text-anchor="end">Güneydoğu Anadolu</text>
-<rect x="1598.7" y="540" width="30.3" height="56" rx="2" fill="#1a3a52"/>
-<text x="1635.5" y="568" class="val">4.0</text>
-<text x="1592.7" y="638" class="cat" text-anchor="end">Akdeniz</text>
-<rect x="1598.7" y="610" width="37.9" height="56" rx="2" fill="#1a3a52"/>
-<text x="1643.1" y="638" class="val">5.0</text>
-<text x="1592.7" y="708" class="cat" text-anchor="end">Ege</text>
-<rect x="1598.7" y="680" width="29.4" height="56" rx="2" fill="#1a3a52"/>
-<text x="1634.6" y="708" class="val">3.9</text>
-<text x="40.0" y="754" class="source">Kaynak: YSK seçmen kütüğü, Endeksa, yazarın hesaplamaları</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 920" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+<text x="222.5" y="44" text-anchor="middle" font-size="26" font-family="Newsreader,serif" font-weight="600" fill="#1a1a1a">Pendik Geneli</text>
+<text x="222.5" y="72" text-anchor="middle" font-size="15" font-family="Inter Tight,sans-serif" font-style="italic" fill="#666">545,534 seçmen</text>
+<text x="195.0" y="147.9" text-anchor="end" font-size="17" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a3a52">Pendikli</text>
+<rect x="205.0" y="115.9" width="14.2" height="52.0" fill="#1a3a52" rx="2"/>
+<text x="227.2" y="147.9" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%4.0</text>
+<text x="195.0" y="231.8" text-anchor="end" font-size="17" font-family="Inter Tight,sans-serif" font-weight="600" fill="#4a90b8">İstanbul (diğer ilçe)</text>
+<rect x="205.0" y="199.8" width="18.0" height="52.0" fill="#4a90b8" rx="2"/>
+<text x="231.0" y="231.8" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%5.1</text>
+<text x="195.0" y="315.7" text-anchor="end" font-size="17" font-family="Inter Tight,sans-serif" font-weight="600" fill="#88b5cf">Marmara</text>
+<rect x="205.0" y="283.7" width="26.6" height="52.0" fill="#88b5cf" rx="2"/>
+<text x="239.6" y="315.7" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%7.5</text>
+<text x="195.0" y="399.6" text-anchor="end" font-size="17" font-family="Inter Tight,sans-serif" font-weight="600" fill="#2a9d8f">Karadeniz</text>
+<rect x="205.0" y="367.6" width="136.0" height="52.0" fill="#2a9d8f" rx="2"/>
+<text x="349.0" y="399.6" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%38.3</text>
+<text x="195.0" y="483.5" text-anchor="end" font-size="17" font-family="Inter Tight,sans-serif" font-weight="600" fill="#e9c46a">İç Anadolu</text>
+<rect x="205.0" y="451.5" width="53.2" height="52.0" fill="#e9c46a" rx="2"/>
+<text x="266.2" y="483.5" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%15.0</text>
+<text x="195.0" y="567.4" text-anchor="end" font-size="17" font-family="Inter Tight,sans-serif" font-weight="600" fill="#e76f51">Doğu Anadolu</text>
+<rect x="205.0" y="535.4" width="73.7" height="52.0" fill="#e76f51" rx="2"/>
+<text x="286.7" y="567.4" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%20.8</text>
+<text x="195.0" y="651.3" text-anchor="end" font-size="17" font-family="Inter Tight,sans-serif" font-weight="600" fill="#9c6644">Güneydoğu</text>
+<rect x="205.0" y="619.3" width="12.9" height="52.0" fill="#9c6644" rx="2"/>
+<text x="225.9" y="651.3" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%3.6</text>
+<text x="195.0" y="735.2" text-anchor="end" font-size="17" font-family="Inter Tight,sans-serif" font-weight="600" fill="#f4a261">Akdeniz</text>
+<rect x="205.0" y="703.2" width="10.2" height="52.0" fill="#f4a261" rx="2"/>
+<text x="223.2" y="735.2" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%2.9</text>
+<text x="195.0" y="819.1" text-anchor="end" font-size="17" font-family="Inter Tight,sans-serif" font-weight="600" fill="#588b8b">Ege</text>
+<rect x="205.0" y="787.0" width="10.0" height="52.0" fill="#588b8b" rx="2"/>
+<text x="223.0" y="819.1" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%2.8</text>
+<text x="607.5" y="44" text-anchor="middle" font-size="26" font-family="Newsreader,serif" font-weight="600" fill="#1a1a1a">Düşük Gelir</text>
+<text x="607.5" y="72" text-anchor="middle" font-size="15" font-family="Inter Tight,sans-serif" font-style="italic" fill="#666">460,646 seçmen</text>
+<line x1="415.0" y1="100" x2="415.0" y2="855" stroke="#cfc8b8" stroke-width="1"/>
+<rect x="590.0" y="115.9" width="14.0" height="52.0" fill="#1a3a52" rx="2"/>
+<text x="612.0" y="147.9" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%3.9</text>
+<rect x="590.0" y="199.8" width="14.2" height="52.0" fill="#4a90b8" rx="2"/>
+<text x="612.2" y="231.8" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%4.0</text>
+<rect x="590.0" y="283.7" width="25.3" height="52.0" fill="#88b5cf" rx="2"/>
+<text x="623.3" y="315.7" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%7.1</text>
+<rect x="590.0" y="367.6" width="140.0" height="52.0" fill="#2a9d8f" rx="2"/>
+<text x="738.0" y="399.6" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%39.5</text>
+<rect x="590.0" y="451.5" width="53.8" height="52.0" fill="#e9c46a" rx="2"/>
+<text x="651.8" y="483.5" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%15.2</text>
+<rect x="590.0" y="535.4" width="76.5" height="52.0" fill="#e76f51" rx="2"/>
+<text x="674.5" y="567.4" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%21.6</text>
+<rect x="590.0" y="619.3" width="12.7" height="52.0" fill="#9c6644" rx="2"/>
+<text x="610.7" y="651.3" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%3.6</text>
+<rect x="590.0" y="703.2" width="8.9" height="52.0" fill="#f4a261" rx="2"/>
+<text x="606.9" y="735.2" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%2.5</text>
+<rect x="590.0" y="787.0" width="9.4" height="52.0" fill="#588b8b" rx="2"/>
+<text x="607.4" y="819.1" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%2.7</text>
+<text x="992.5" y="44" text-anchor="middle" font-size="26" font-family="Newsreader,serif" font-weight="600" fill="#1a1a1a">Orta Gelir</text>
+<text x="992.5" y="72" text-anchor="middle" font-size="15" font-family="Inter Tight,sans-serif" font-style="italic" fill="#666">81,721 seçmen</text>
+<line x1="800.0" y1="100" x2="800.0" y2="855" stroke="#cfc8b8" stroke-width="1"/>
+<rect x="975.0" y="115.9" width="11.9" height="52.0" fill="#1a3a52" rx="2"/>
+<text x="994.9" y="147.9" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%3.4</text>
+<rect x="975.0" y="199.8" width="39.5" height="52.0" fill="#4a90b8" rx="2"/>
+<text x="1022.5" y="231.8" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%11.1</text>
+<rect x="975.0" y="283.7" width="34.0" height="52.0" fill="#88b5cf" rx="2"/>
+<text x="1017.0" y="315.7" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%9.6</text>
+<rect x="975.0" y="367.6" width="113.2" height="52.0" fill="#2a9d8f" rx="2"/>
+<text x="1096.2" y="399.6" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%31.9</text>
+<rect x="975.0" y="451.5" width="51.0" height="52.0" fill="#e9c46a" rx="2"/>
+<text x="1034.0" y="483.5" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%14.4</text>
+<rect x="975.0" y="535.4" width="59.4" height="52.0" fill="#e76f51" rx="2"/>
+<text x="1042.4" y="567.4" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%16.7</text>
+<rect x="975.0" y="619.3" width="14.3" height="52.0" fill="#9c6644" rx="2"/>
+<text x="997.3" y="651.3" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%4.0</text>
+<rect x="975.0" y="703.2" width="17.8" height="52.0" fill="#f4a261" rx="2"/>
+<text x="1000.8" y="735.2" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%5.0</text>
+<rect x="975.0" y="787.0" width="13.8" height="52.0" fill="#588b8b" rx="2"/>
+<text x="996.8" y="819.1" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%3.9</text>
+<text x="1377.5" y="44" text-anchor="middle" font-size="26" font-family="Newsreader,serif" font-weight="600" fill="#1a1a1a">Taşra</text>
+<text x="1377.5" y="72" text-anchor="middle" font-size="15" font-family="Inter Tight,sans-serif" font-style="italic" fill="#666">3,167 seçmen</text>
+<line x1="1185.0" y1="100" x2="1185.0" y2="855" stroke="#cfc8b8" stroke-width="1"/>
+<rect x="1360.0" y="115.9" width="96.8" height="52.0" fill="#1a3a52" rx="2"/>
+<text x="1464.8" y="147.9" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%27.3</text>
+<rect x="1360.0" y="199.8" width="22.1" height="52.0" fill="#4a90b8" rx="2"/>
+<text x="1390.1" y="231.8" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%6.2</text>
+<rect x="1360.0" y="283.7" width="18.5" height="52.0" fill="#88b5cf" rx="2"/>
+<text x="1386.5" y="315.7" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%5.2</text>
+<rect x="1360.0" y="367.6" width="137.8" height="52.0" fill="#2a9d8f" rx="2"/>
+<text x="1505.8" y="399.6" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%38.8</text>
+<rect x="1360.0" y="451.5" width="17.6" height="52.0" fill="#e9c46a" rx="2"/>
+<text x="1385.6" y="483.5" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%5.0</text>
+<rect x="1360.0" y="535.4" width="43.0" height="52.0" fill="#e76f51" rx="2"/>
+<text x="1411.0" y="567.4" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%12.1</text>
+<rect x="1360.0" y="619.3" width="9.6" height="52.0" fill="#9c6644" rx="2"/>
+<text x="1377.6" y="651.3" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%2.7</text>
+<rect x="1360.0" y="703.2" width="4.6" height="52.0" fill="#f4a261" rx="2"/>
+<text x="1372.6" y="735.2" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%1.3</text>
+<rect x="1360.0" y="787.0" width="4.8" height="52.0" fill="#588b8b" rx="2"/>
+<text x="1372.8" y="819.1" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%1.4</text>
+<line x1="205.0" y1="863" x2="345.0" y2="863" stroke="#999" stroke-width="0.6"/>
+<text x="205.0" y="883" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">0</text>
+<text x="345.0" y="883" text-anchor="end" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">%39</text>
+<line x1="590.0" y1="863" x2="730.0" y2="863" stroke="#999" stroke-width="0.6"/>
+<text x="590.0" y="883" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">0</text>
+<text x="730.0" y="883" text-anchor="end" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">%39</text>
+<line x1="975.0" y1="863" x2="1115.0" y2="863" stroke="#999" stroke-width="0.6"/>
+<text x="975.0" y="883" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">0</text>
+<text x="1115.0" y="883" text-anchor="end" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">%39</text>
+<line x1="1360.0" y1="863" x2="1500.0" y2="863" stroke="#999" stroke-width="0.6"/>
+<text x="1360.0" y="883" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">0</text>
+<text x="1500.0" y="883" text-anchor="end" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">%39</text>
 </svg>

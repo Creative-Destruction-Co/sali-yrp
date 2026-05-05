@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 820" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+<rect x="220" y="35" width="22" height="22" fill="#3a86ff" rx="2"/>
+<text x="250" y="52" font-size="20" font-family="Inter Tight,sans-serif" fill="#1a1a1a">Düşük Gelir</text>
+<rect x="430" y="35" width="22" height="22" fill="#fb8500" rx="2"/>
+<text x="460" y="52" font-size="20" font-family="Inter Tight,sans-serif" fill="#1a1a1a">Orta Gelir</text>
+<rect x="640" y="35" width="22" height="22" fill="#2a9d8f" rx="2"/>
+<text x="670" y="52" font-size="20" font-family="Inter Tight,sans-serif" fill="#1a1a1a">Taşra</text>
+<text x="206" y="154.5" text-anchor="end" font-size="22" font-family="Inter Tight,sans-serif" font-weight="600" fill="#FFC436">AK PARTİ</text>
+<rect x="220" y="100.3" width="1170.6" height="28.4" fill="#3a86ff" rx="1.5"/>
+<text x="1398.5589120584482" y="121.1" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%41.81</text>
+<rect x="220" y="131.8" width="817.4" height="28.4" fill="#fb8500" rx="1.5"/>
+<text x="1045.368285538119" y="152.5" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%29.19</text>
+<rect x="220" y="163.2" width="1270.0" height="28.4" fill="#2a9d8f" rx="1.5"/>
+<text x="1498.0" y="183.9" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%45.36</text>
+<text x="206" y="269.5" text-anchor="end" font-size="22" font-family="Inter Tight,sans-serif" font-weight="600" fill="#FE0000">CHP</text>
+<rect x="220" y="215.3" width="637.0" height="28.4" fill="#3a86ff" rx="1.5"/>
+<text x="865.0160973983217" y="236.1" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%22.75</text>
+<rect x="220" y="246.8" width="990.9" height="28.4" fill="#fb8500" rx="1.5"/>
+<text x="1218.9469190480272" y="267.5" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%35.39</text>
+<rect x="220" y="278.2" width="497.3" height="28.4" fill="#2a9d8f" rx="1.5"/>
+<text x="725.273901231017" y="298.9" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%17.76</text>
+<text x="206" y="384.5" text-anchor="end" font-size="22" font-family="Inter Tight,sans-serif" font-weight="600" fill="#8B1874">YEŞİL SOL PARTİ</text>
+<rect x="220" y="330.4" width="160.9" height="28.4" fill="#3a86ff" rx="1.5"/>
+<text x="388.8585563236503" y="351.1" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%5.74</text>
+<rect x="220" y="361.8" width="97.2" height="28.4" fill="#fb8500" rx="1.5"/>
+<text x="325.2034943561033" y="382.5" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%3.47</text>
+<rect x="220" y="393.2" width="132.0" height="28.4" fill="#2a9d8f" rx="1.5"/>
+<text x="359.9533535543155" y="413.9" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%4.71</text>
+<text x="206" y="499.5" text-anchor="end" font-size="22" font-family="Inter Tight,sans-serif" font-weight="600" fill="#11009E">MHP</text>
+<rect x="220" y="445.4" width="230.3" height="28.4" fill="#3a86ff" rx="1.5"/>
+<text x="458.3209571403976" y="466.1" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%8.23</text>
+<rect x="220" y="476.8" width="170.8" height="28.4" fill="#fb8500" rx="1.5"/>
+<text x="398.8185373954679" y="497.5" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%6.10</text>
+<rect x="220" y="508.2" width="291.5" height="28.4" fill="#2a9d8f" rx="1.5"/>
+<text x="519.5100133062615" y="528.9" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%10.41</text>
+<text x="206" y="614.5" text-anchor="end" font-size="22" font-family="Inter Tight,sans-serif" font-weight="600" fill="#52D3D8">İYİ PARTİ</text>
+<rect x="220" y="560.4" width="195.2" height="28.4" fill="#3a86ff" rx="1.5"/>
+<text x="423.23276549135863" y="581.1" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%6.97</text>
+<rect x="220" y="591.8" width="311.4" height="28.4" fill="#fb8500" rx="1.5"/>
+<text x="539.4466064486608" y="612.5" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%11.12</text>
+<rect x="220" y="623.2" width="208.8" height="28.4" fill="#2a9d8f" rx="1.5"/>
+<text x="436.7569376483777" y="643.9" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%7.46</text>
+<text x="206" y="729.5" text-anchor="end" font-size="22" font-family="Inter Tight,sans-serif" font-weight="600" fill="#65B741">YENİDEN REFAH</text>
+<rect x="220" y="675.4" width="116.4" height="28.4" fill="#3a86ff" rx="1.5"/>
+<text x="344.44770479317907" y="696.1" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%4.16</text>
+<rect x="220" y="706.8" width="73.1" height="28.4" fill="#fb8500" rx="1.5"/>
+<text x="301.1221036472369" y="727.5" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%2.61</text>
+<rect x="220" y="738.2" width="137.1" height="28.4" fill="#2a9d8f" rx="1.5"/>
+<text x="365.12788681384893" y="758.9" font-size="16" font-family="Inter Tight,sans-serif" font-weight="600" fill="#1a1a1a">%4.90</text>
+</svg>
