@@ -17,8 +17,23 @@ PALETTE = {
 }
 ROWS = list(PALETTE.keys())
 
-# === SVG 1: Gelir tipi (yan yana bar) ===
+# === SVG 1: Gelir tipi (yan yana bar) — seçmen sayısı bazında ===
 def render_gelir():
+    sys.path.insert(0, r'C:\Users\ismet\.claude\skills\secim-mahalle-match\scripts')
+    from normalize import normalize_mahalle
+    sets = json.loads((OUT/'_strategy_sets.json').read_text(encoding='utf-8'))
+    basari_set = set(sets['basari']); hedef_set = set(sets['hedef'])
+    xls = pd.read_excel(ROOT/'PENDİK/Secim/2024_BELEDİYE_MECLİSİ_ÜYELİĞİ.xlsx')
+    piv = xls.pivot_table(index='muhtarlik_ADI', columns='variable', values='value', aggfunc='sum').fillna(0)
+    piv['_norm'] = [normalize_mahalle(m) for m in piv.index]
+    tip = pd.read_csv(ROOT/'PENDİK/tip/tip.csv').set_index('normalized')['durum']
+    piv['_durum'] = piv['_norm'].map(tip)
+    def sec_by_durum(s):
+        sub = piv[piv['_norm'].isin(s)]
+        return {d: int(sub[sub['_durum']==d]['secmen_SAYISI'].sum()) for d in ['low','middle','Tasra']}
+    sec_b = sec_by_durum(basari_set); sec_h = sec_by_durum(hedef_set)
+    print(f'  gelir secmen: basari={sec_b}, hedef={sec_h}')
+
     W, H = 1600, 720
     PAD_T, PAD_B = 110, 50
     panel_w = W/2
@@ -26,26 +41,30 @@ def render_gelir():
     glabel = {'low':'Düşük Gelir','middle':'Orta Gelir','Tasra':'Taşra'}
     gcolor = {'low':'#3a86ff','middle':'#fb8500','Tasra':'#2a9d8f'}
     groups = ['low','middle','Tasra']
-    max_cnt = max(max(data[g]['gelir'].get(k,0) for k in groups) for g in ['basari','hedef'])
-    for i,(gkey,title) in enumerate([('basari','YRP Başarılı (25 mahalle)'),('hedef','YRP Hedeflemeli (7 mahalle)')]):
+    by_g = {'basari': sec_b, 'hedef': sec_h}
+    max_cnt = max(max(by_g[g][k] for k in groups) for g in ['basari','hedef'])
+    nb = len(basari_set); nh = len(hedef_set)
+    for i,(gkey,title) in enumerate([('basari',f'YRP Başarılı ({nb} mahalle)'),('hedef',f'YRP Hedeflemeli ({nh} mahalle)')]):
         cx = i*panel_w
+        tot = sum(by_g[gkey].values())
         elems.append(f'<text x="{cx+panel_w/2:.1f}" y="48" text-anchor="middle" font-size="26" font-family="Newsreader,serif" font-weight="600" fill="#1a1a1a">{escape(title)}</text>')
-        elems.append(f'<text x="{cx+panel_w/2:.1f}" y="76" text-anchor="middle" font-size="15" font-family="Inter Tight,sans-serif" font-style="italic" fill="#666">mahalle gelir tipi dağılımı</text>')
+        elems.append(f'<text x="{cx+panel_w/2:.1f}" y="76" text-anchor="middle" font-size="15" font-family="Inter Tight,sans-serif" font-style="italic" fill="#666">{tot:,} seçmen — gelir tipine göre</text>')
         if i>0:
             elems.append(f'<line x1="{cx:.1f}" y1="{PAD_T-30}" x2="{cx:.1f}" y2="{H-PAD_B+10}" stroke="#cfc8b8" stroke-width="1"/>')
         n_row = len(groups)
         plot_h = H-PAD_T-PAD_B
         row_h = plot_h/n_row
         bar_h = row_h*0.6
-        L = cx + 200; R = cx + panel_w - 100
+        L = cx + 200; R = cx + panel_w - 140
         bar_w_max = R - L
         for ri,g in enumerate(groups):
-            cnt = data[gkey]['gelir'].get(g,0)
+            cnt = by_g[gkey][g]
+            pct = cnt/tot*100 if tot>0 else 0
             y = PAD_T + ri*row_h + (row_h-bar_h)/2
             bw = bar_w_max * cnt/max_cnt if max_cnt>0 else 0
             elems.append(f'<text x="{L-12:.1f}" y="{y+bar_h/2+6:.1f}" text-anchor="end" font-size="20" font-family="Inter Tight,sans-serif" font-weight="600" fill="{gcolor[g]}">{glabel[g]}</text>')
             elems.append(f'<rect x="{L:.1f}" y="{y:.1f}" width="{bw:.1f}" height="{bar_h:.1f}" fill="{gcolor[g]}" rx="2"/>')
-            elems.append(f'<text x="{L+bw+10:.1f}" y="{y+bar_h/2+6:.1f}" font-size="22" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">{cnt}</text>')
+            elems.append(f'<text x="{L+bw+10:.1f}" y="{y+bar_h/2+6:.1f}" font-size="20" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">{cnt:,} <tspan font-size="15" font-weight="500" fill="#666">(%{pct:.1f})</tspan></text>')
     svg = (f'<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">\n'+'\n'.join(elems)+'\n</svg>\n')
     (OUT/'pendik_strategy_gelir.svg').write_text(svg, encoding='utf-8')
     print(f'  gelir: {len(svg)//1024}KB')

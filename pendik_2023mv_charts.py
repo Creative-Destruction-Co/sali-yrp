@@ -90,12 +90,6 @@ for i, (label, vals, n, secmen) in enumerate(panel_data):
         elems.append(f'<rect x="{bar_x0:.1f}" y="{y:.1f}" width="{bw:.1f}" height="{bar_h:.1f}" fill="{c}" rx="2"/>')
         elems.append(f'<text x="{bar_x0 + bw + 8:.1f}" y="{y + bar_h/2 + 6:.1f}" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%{v:.1f}</text>')
 
-for i in range(4):
-    px = PAD_L + i * panel_w
-    bar_x0 = px + inner_label_w
-    elems.append(f'<line x1="{bar_x0:.1f}" y1="{bot_y + 8}" x2="{bar_x0 + inner_bar_w:.1f}" y2="{bot_y + 8}" stroke="#999" stroke-width="0.6"/>')
-    elems.append(f'<text x="{bar_x0:.1f}" y="{bot_y + 28}" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">0</text>')
-    elems.append(f'<text x="{bar_x0 + inner_bar_w:.1f}" y="{bot_y + 28}" text-anchor="end" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">%{global_max:.0f}</text>')
 
 svg = (f'<?xml version="1.0" encoding="UTF-8"?>\n'
        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '

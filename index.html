@@ -89,6 +89,7 @@
     max-width: 1280px;
     text-wrap: balance;
     text-transform: none;
+    text-align: left;
   }
   .reveal p.slide-sub {
     font-family: var(--serif);
@@ -457,35 +458,93 @@
 
 <!-- ========== 1) KAPAK ========== -->
 <section class="cover" data-state="cover">
-  <div class="cover-inner">
-    <div class="cover-grid">
-      <div class="cover-top">
-        <div class="lockup">
-          <span class="bar"></span>
-          <span>Saha Raporu &nbsp;·&nbsp; İstanbul</span>
-        </div>
-        <div class="index">No. 01 &nbsp;·&nbsp; Pendik</div>
-      </div>
-      <div class="cover-center">
-        <div class="cover-kicker">2023 Milletvekili Genel Seçimi</div>
-        <h1>Pendik &mdash;<br>Mahalle Bazlı<br><em>Seçim Analizi</em></h1>
-        <span class="accent"></span>
-        <h3>2015 — 2024 arası dört genel seçim, üç yerel seçim;<br><strong>41 mahalle</strong>, <strong>545 bin seçmen</strong>, sandık-bazlı oran toplamları.</h3>
-      </div>
-      <div class="cover-bottom">
-        <div class="cover-stats">
-          <div class="stat"><span class="num">41</span><span class="lbl">Mahalle</span></div>
-          <div class="stat"><span class="num">545K</span><span class="lbl">Seçmen</span></div>
-          <div class="stat"><span class="num">22</span><span class="lbl">Seçim Dosyası</span></div>
-          <div class="stat"><span class="num">10y</span><span class="lbl">Zaman Penceresi</span></div>
-        </div>
-        <div class="cover-meta">
-          <strong>Veri Kaynakları</strong>
-          YSK · sandık kütüğü · Endeksa<br>
-          GADM · ank-ar paleti · Pendik mahalle SHP
-        </div>
-      </div>
+  <style>
+    .cv1-inner {
+      height: 100%; width: 100%;
+      box-sizing: border-box;
+      padding: 0;
+      display: block;
+      background: var(--paper);
+      position: relative;
+      overflow: hidden;
+      font-family: var(--sans);
+      color: var(--ink);
+    }
+    /* Center stack — vertical hierarchy */
+    .cv1-center {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -54%);
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 80px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    /* Subtitle 2 — eyebrow / party */
+    .cv1-eyebrow {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.46em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 40px;
+    }
+    /* Headline */
+    .reveal .cover .cv1-title {
+      font-family: var(--serif);
+      font-variation-settings: 'opsz' 72;
+      font-weight: 700;
+      font-size: 108px;
+      line-height: 0.92;
+      letter-spacing: -0.032em;
+      color: var(--ink);
+      margin: 0;
+      text-wrap: balance;
+    }
+    /* Subtitle 1 — Pendik */
+    .cv1-locale {
+      margin-top: 44px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-variation-settings: 'opsz' 60;
+      font-size: 60px;
+      line-height: 1;
+      letter-spacing: -0.012em;
+      color: var(--ink);
+    }
+    /* Thin red accent rule */
+    .cv1-rule {
+      display: block;
+      margin: 32px auto 0;
+      width: 72px;
+      height: 2px;
+      background: var(--accent);
+    }
+    /* Bottom-right date */
+    .cv1-date {
+      position: absolute;
+      bottom: 56px; right: 80px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 22px;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.01em;
+    }
+  </style>
+  <div class="cv1-inner">
+    <div class="cv1-center">
+      <div class="cv1-eyebrow">Yeniden Refah Partisi</div>
+      <h1 class="cv1-title">Mahalle Bazlı<br>Seçim Analizi</h1>
+      <span class="cv1-rule"></span>
+      <div class="cv1-locale">Pendik</div>
     </div>
+    <div class="cv1-date">05.05.2026</div>
   </div>
 </section>
 
@@ -494,7 +553,7 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Türkiye İl Geneli</span><span class="slide-folio">01 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">2023 Milletvekili — Türkiye İl Bazında Birinci Parti <span style="color:var(--muted);font-style:italic;font-weight:400;">(GADM sınırları)</span></h2>
+      <h2 class="slide-title">2023 Genel Seçim Sonuçları, İl Bazında Birinci Partiler</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/gadm_tr_il_2023mv.svg" type="image/svg+xml"></object>
@@ -512,7 +571,7 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Türkiye İlçe Geneli</span><span class="slide-folio">02 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">2023 Milletvekili — Türkiye İlçe Bazında Birinci Parti <span style="color:var(--muted);font-style:italic;font-weight:400;">(GADM sınırları)</span></h2>
+      <h2 class="slide-title">2023 Genel Seçim Sonuçları, İlçe Bazında Birinci Partiler</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/gadm_tr_ilce_2023mv.svg" type="image/svg+xml"></object>
@@ -532,11 +591,15 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Geçiş · Türkiye → Pendik</span><span class="slide-folio">03 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Türkiye → İstanbul → <em style="font-style:italic;">Pendik</em></h2>
+      <h2 class="slide-title">2023 Genel Seçim Sonuçları, Pendik Mahalle Bazında Birinci Partiler</h2>
     </div>
     <div class="layer-stack">
       <object class="layer-ilce-zoom" data="_v2_assets/gadm_tr_ilce_2023mv.svg" type="image/svg+xml"></object>
       <object class="layer-pendik-auto" data="_v2_assets/pendik_winner_2023mv.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="slide-legend" style="font-size:18px;">
+      <span class="legend-item"><span class="legend-swatch akp" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:8px;border-radius:2px;"></span>AK PARTİ</span>
+      <span class="legend-item"><span class="legend-swatch chp" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:8px;border-radius:2px;"></span>CHP</span>
     </div>
   </div>
 </section>
@@ -546,7 +609,7 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Pendik · Mahalle Tipolojisi</span><span class="slide-folio">04 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Pendik — Mahalle Tipleri <span style="color:var(--muted);font-style:italic;font-weight:400;">(Endeksa gelir + Taşra)</span></h2>
+      <h2 class="slide-title">Gelir grubu karşılaştırması, Pendik</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_tip.svg" type="image/svg+xml"></object>
@@ -566,8 +629,7 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Pendik · Gelir Dağılımı</span><span class="slide-folio">05 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Pendik — Gelir Grubuna Göre Seçmen Dağılımı</h2>
-      <p class="slide-sub">Mahalle bazında gelir grubu (Endeksa) × seçmen sayısı (sandık kütüğü).</p>
+      <h2 class="slide-title">Pendik'te Gelir ve İdari Gruplara Göre Seçmen Dağılımı</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_gelir_bar.svg" type="image/svg+xml"></object>
@@ -580,14 +642,13 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Pendik · 2023 MV · Gelir Tipine Göre</span><span class="slide-folio">06 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Pendik — 2023 Milletvekili <span style="color:var(--muted);font-style:italic;font-weight:400;">(ilçe geneli + 3 gelir grubu)</span></h2>
-      <p class="slide-sub">Pendik geneli: <strong style="font-style:normal;color:#FFC436;">AKP %35.8</strong> · <strong style="font-style:normal;color:#FE0000;">CHP %22.0</strong>. Orta gelirde <strong style="font-style:normal;color:#FE0000;">CHP %31.4</strong> birinci; düşük gelir + taşrada <strong style="font-style:normal;color:#FFC436;">AKP %37.5 / %41.9</strong>. Sandığa gitmeyen <strong style="font-style:normal;">%8.7</strong>, geçersiz <strong style="font-style:normal;">%1.7</strong>.</p>
+      <h2 class="slide-title">2023 Genel Seçimi, Gelir Gruplarına göre Seçim Sonuçları, %</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_2023mv_4panel.svg" type="image/svg+xml"></object>
     </div>
-    <div class="slide-legend">
-      <span class="legend-item"><span class="legend-cap">Kayıtlı seçmen sayısı üzerinden hesaplanmıştır · Kaynak: YSK · 547.235 seçmen</span></span>
+    <div class="slide-legend" style="justify-content:flex-start;">
+      <span class="legend-item"><span class="legend-cap">Kaynak: YSK, Yazarın Hesaplamaları</span></span>
     </div>
   </div>
 </section>
@@ -597,14 +658,13 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Pendik · 2024 Meclis · Gelir Tipine Göre</span><span class="slide-folio">07 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Pendik — 2024 Belediye Meclisi <span style="color:var(--muted);font-style:italic;font-weight:400;">(ilçe geneli + 3 gelir grubu)</span></h2>
-      <p class="slide-sub">Pendik geneli: <strong style="font-style:normal;color:#FFC436;">AKP %33.3</strong> · <strong style="font-style:normal;color:#FE0000;">CHP %31.7</strong> kıyasıya. Orta gelirde <strong style="font-style:normal;color:#FE0000;">CHP %40.9</strong>; düşük gelir + taşrada <strong style="font-style:normal;color:#FFC436;">AKP %34.7 / %38.3</strong>. Sandığa gitmeyen <strong style="font-style:normal;">%20.6</strong>, geçersiz <strong style="font-style:normal;">%2.5</strong>.</p>
+      <h2 class="slide-title">2024 Belediye Meclisi Seçimi, Gelir Gruplarına göre Seçim Sonuçları, %</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_2024mec_4panel.svg" type="image/svg+xml"></object>
     </div>
-    <div class="slide-legend">
-      <span class="legend-item"><span class="legend-cap">Kayıtlı seçmen sayısı üzerinden hesaplanmıştır · Kaynak: YSK · 545.566 seçmen</span></span>
+    <div class="slide-legend" style="justify-content:flex-start;">
+      <span class="legend-item"><span class="legend-cap">Kaynak: YSK, Yazarın Hesaplamaları</span></span>
     </div>
   </div>
 </section>
@@ -614,18 +674,18 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Pendik · 2024 Meclis · Kayıp Oy</span><span class="slide-folio">08 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Pendik — 2024 Meclis: Kayıp Oy Haritası <span style="color:var(--muted);font-style:italic;font-weight:400;">(geçersiz + sandığa gitmeyen + küçük partiler)</span></h2>
-      <p class="slide-sub">Üç kategorinin toplamı; Pendik ortalaması <strong style="font-style:normal;color:var(--accent);">%24.9</strong>. Kırmızı = ilçe ortalamasının altı (kayıp daha düşük), mavi = üstü (kayıp daha yüksek).</p>
+      <h2 class="slide-title">2024 Belediye Meclisi Seçimi, Geçersiz, Kullanılmayan ve Diğer Oylar, %</h2>
+      <p class="slide-sub" style="text-align:left;font-size:28px;">Sistem dışı oylar ilçe merkezindeki düşük gelir gruplu ve Karadenizli mahallelere daha odaklı.</p>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_2024mec_kayip.svg" type="image/svg+xml"></object>
     </div>
-    <div class="slide-legend">
+    <div class="slide-legend" style="position:relative;justify-content:center;">
+      <span class="legend-item" style="position:absolute;left:0;"><span class="legend-cap">Kaynak: YSK, Yazarın Hesaplamaları</span></span>
       <span class="legend-grad-wrap">
         <span class="legend-grad" style="background:linear-gradient(to right,#b2182b,#f7f7f7 64.0%,#2166ac);"></span>
         <span class="legend-grad-axis"><span>%9.5</span><span>%17.2</span><span>%24.9</span><span>%26.9</span><span>%28.8</span></span>
       </span>
-      <span class="legend-item"><span class="legend-cap">mahalle bazlı kayıp oy oranı · merkez = ilçe ortalaması (%24.9)</span></span>
     </div>
   </div>
 </section>
@@ -635,7 +695,7 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Pendik · Bölge Dağılımı</span><span class="slide-folio">09 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Pendik — Memleket Bölgesine Göre Seçmen Dağılımı</h2>
+      <h2 class="slide-title">Memleketlere göre Seçmenlerin Dağılımı, 2024, %</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_bolge_bar.svg" type="image/svg+xml"></object>
@@ -648,8 +708,7 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Pendik · Çapraz Tablo</span><span class="slide-folio">10 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Pendik — Gelir Grubu <span style="color:var(--accent);font-style:italic;">×</span> Memleket Bölgesi</h2>
-      <p class="slide-sub">Her panel kendi gelir grubu içindeki bölge yüzdesi <span style="font-style:normal;color:var(--ink-soft);">(kolon toplamı %100)</span>.</p>
+      <h2 class="slide-title">Gelir Grubu ve Memleketlere göre Seçmenlerin Dağılımı, 2024, %</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_gelir_x_bolge.svg" type="image/svg+xml"></object>
@@ -663,7 +722,6 @@
     <div class="slide-head"><span class="slide-eyebrow">Pendik · Memleket Coğrafyası</span><span class="slide-folio">11 / 23</span></div>
     <div class="slide-headblock">
       <h2 class="slide-title">Pendik'te Yaşayan Seçmenlerin Memleket Dağılımı</h2>
-      <p class="slide-sub">Sandık kütüğü "Nüfus İli × İlçesi" — GADM 4.1 ilçe haritası üzerinde mutlak seçmen sayısı. <strong style="font-style:normal;">545.534 seçmen</strong>; en yoğun: Pendik (21.8K), Bayburt Merkez (9.1K), Bartın Ulus (8.4K), Erzincan Refahiye (8.2K), Ordu Mesudiye (5.9K).</p>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/memleket_harita.svg" type="image/svg+xml"></object>
@@ -679,8 +737,7 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Pendik · HH Birleşik</span><span class="slide-folio">12 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Memleket HH Kümeleri — Tek Harita</h2>
-      <p class="slide-sub">Her mahalle, en güçlü olduğu memleket bölgesinin yoğunlaştığı (HH) küme rengiyle boyandı; HH'a düşmeyen mahalleler gri.</p>
+      <h2 class="slide-title">Pendik'te Memleket Kümeleri</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_memleket_hh_birlesik.svg" type="image/svg+xml"></object>
@@ -705,8 +762,8 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">AK Parti · Mahalle Sapması</span><span class="slide-folio">13 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">AK Parti — 2018 → 2023 Mahalle Sapması <span style="color:var(--muted);font-style:italic;font-weight:400;">(ilçe ortalamasına göre)</span></h2>
-      <p class="slide-sub">Pendik ilçe ortalama swing: <strong style="font-style:normal;color:var(--accent);">−7.60 puan</strong> · 0 = ilçe ile aynı oranda kayıp.</p>
+      <h2 class="slide-title">2018-2023 Genel Seçimlerinde AK Parti'nin Oy Kaybı</h2>
+      <p class="slide-sub" style="text-align:left;font-size:28px;">AK Parti, Pendik'de ortalama %7,6 oy kaybetti. Bu mahalleler taşrada Pendikliler, şehir merkezinde düşük gelirli Karadenizlilerden oluşmakta.</p>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_akp_swing.svg" type="image/svg+xml"></object>
@@ -716,7 +773,6 @@
         <span class="legend-grad grad-div"></span>
         <span class="legend-grad-axis"><span>−14</span><span>−11</span><span>−8</span><span>−5</span><span>−2</span></span>
       </span>
-      <span class="legend-item"><span class="legend-cap">AKP oy azalması (puan) · Pendik ortalaması −7.6</span></span>
     </div>
   </div>
 </section>
@@ -726,14 +782,10 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Saadet · Dört Dönem Karşılaştırması</span><span class="slide-folio">14 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Saadet — Dört Dönem Mahalle Sapması</h2>
-      <p class="slide-sub">2011 · 2015 Haziran · 2015 Kasım · 2018 — her panelde mahallenin ilçe ortalamasına göre puan farkı.</p>
+      <h2 class="slide-title">Genel Seçimlerde Saadet Partisi'nin Pendik Karnesi, İlçe Ortalamasından Sapma, %</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_saadet_4donem.svg" type="image/svg+xml"></object>
-    </div>
-    <div class="slide-legend">
-      <span class="legend-item"><span class="legend-cap">Her panel kendi skalası — kırmızı = ilçe ortalamasının altı, mavi = üstü; lejant değerleri gerçek mahalle %'leri</span></span>
     </div>
   </div>
 </section>
@@ -743,8 +795,7 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Yeniden Refah · 2023 MV</span><span class="slide-folio">15 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Yeniden Refah — 2023 Milletvekili</h2>
-      <p class="slide-sub">Mahalle bazlı oy oranı; Pendik 2023 MV ortalaması <strong style="font-style:normal;color:var(--accent);">%3.93</strong>. Ortak skalada gösterim (2024 ile karşılaştırılabilir).</p>
+      <h2 class="slide-title">2023 Genel Seçimlerinde Yeniden Refah Partisi'nin Oy Dağılımı, %</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_yrp_2023mv.svg" type="image/svg+xml"></object>
@@ -764,8 +815,7 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Yeniden Refah · 2024 Meclis</span><span class="slide-folio">16 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Yeniden Refah — 2024 Belediye Meclisi</h2>
-      <p class="slide-sub">Mahalle bazlı oy oranı; Pendik 2024 Meclis ortalaması <strong style="font-style:normal;color:var(--accent);">%4.52</strong>. Ortak skalada gösterim (2023 ile karşılaştırılabilir).</p>
+      <h2 class="slide-title">2024 Belediye Meclisi Seçimlerinde Yeniden Refah Partisi'nin Oy Dağılımı, %</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_yrp_2024_meclis.svg" type="image/svg+xml"></object>
@@ -785,8 +835,8 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Pendik · AKP ∩ YRP</span><span class="slide-folio">17 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">AKP 2018 → 2023 Daha Çok Kaybetti <span style="color:var(--accent);font-style:italic;">∩</span> YRP 2023 → 2024 Destekçisi</h2>
-      <p class="slide-sub">Mavi mahalleler: AKP'nin ilçe ortalamasının altında performans gösterdiği <strong style="font-style:normal;">19 mahalle</strong>. Butona tıkladığınızda YRP destekçisi olanlarla kesişimi gösterilir (AKP'den YRP'ye geçişin olası yerleri).</p>
+      <h2 class="slide-title">Peki Yeniden Refah Partisi'nin Pendik'de Tabanı Kim?</h2>
+      <p class="slide-sub" style="text-align:left;font-size:28px;">AK Parti'nin Son Genel Seçimlerde İlçe Ortalamasından Fazla Oy Kaybettiği Mahallelerde Yeniden Refah Partisi'nin İlçe Ortalamasından Fazla Oy Aldığı veya Oyunu Arttırdığı Mahalleler.</p>
     </div>
     <div class="filter-bar" style="display:flex;gap:14px;justify-content:center;margin:8px 0 4px;flex-wrap:wrap;">
       <button class="flt-btn" data-flag="fy" style="font-family:var(--sans);font-size:15px;padding:10px 18px;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:2px;font-weight:600;letter-spacing:0.02em;">+ YRP destekçisi <span style="color:var(--muted);font-weight:400;">(26)</span></button>
@@ -842,7 +892,7 @@
     </div>
     <div class="slide-legend">
             <span class="legend-item"><span class="legend-swatch" style="background:#2166ac;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>YRP başarılı</span>
-      <span class="legend-item"><span class="legend-swatch" style="background:#f4a261;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>YRP hedeflemeli</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#f4a261;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>YRP zayıf</span>
       <span class="legend-item" id="filter-status-b"><span class="legend-cap">AKP daha çok kaybetti → <strong style="color:var(--accent);font-style:normal;">19 mahalle</strong></span></span>
     </div>
   </div>
@@ -852,8 +902,8 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Saadet ∩ YRP</span><span class="slide-folio">18 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Saadet 4 Dönem Birleşimi <span style="color:var(--accent);font-style:italic;">∩</span> YRP 2023 → 2024 Arttı <span style="color:var(--muted);font-style:italic;font-weight:400;">(ilçe ortalaması üstü)</span></h2>
-      <p class="slide-sub">Mavi mahalleler: Saadet 4 dönem (2011–2018) içinde en az birinde ilçe ortalamasının üstünde oy aldığı <strong style="font-style:normal;">24 mahalle</strong>. Butona tıklayarak bu seti YRP'nin 2023→2024 arasında oy oranını artırdığı mahallelerle daraltın.</p>
+      <h2 class="slide-title">Peki Yeniden Refah Partisi'nin Pendik'de Tabanı Kim?</h2>
+      <p class="slide-sub" style="text-align:left;font-size:28px;">Saadet Partisi'nin Genel Seçimlerde İlçe Ortalamasından Fazla Oy Aldığı Mahallelerde Yeniden Refah Partisi'nin İlçe Ortalamasından Fazla Oy Aldığı veya Oyunu Arttırdığı Mahalleler.</p>
     </div>
     <div class="filter-bar" style="display:flex;gap:14px;justify-content:center;margin:8px 0 4px;flex-wrap:wrap;">
       <button class="flt-btn" data-flag="fy" style="font-family:var(--sans);font-size:15px;padding:10px 18px;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:2px;font-weight:600;letter-spacing:0.02em;">∩ YRP destekçisi <span style="color:var(--muted);font-weight:400;">(26)</span></button>
@@ -907,7 +957,7 @@
     </div>
     <div class="slide-legend">
             <span class="legend-item"><span class="legend-swatch" style="background:#2166ac;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>YRP başarılı</span>
-      <span class="legend-item"><span class="legend-swatch" style="background:#f4a261;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>YRP hedeflemeli</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#f4a261;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>YRP zayıf</span>
       <span class="legend-item" id="filter-status-c"><span class="legend-cap">Hesaplanıyor…</span></span>
     </div>
   </div>
@@ -917,8 +967,8 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Pendik · Kayıp ∩ YRP</span><span class="slide-folio">19 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Kayıp Oy Yüksek <span style="color:var(--accent);font-style:italic;">∩</span> YRP 2023 → 2024 Arttı</h2>
-      <p class="slide-sub">Mavi mahalleler: kayıp oy ortalamanın üstünde olan <strong style="font-style:normal;">13 mahalle</strong>. Butona tıkladığınızda YRP'nin oyunu artırdığı mahallelerle kesişimi gösterilir.</p>
+      <h2 class="slide-title">Peki Yeniden Refah Partisi'nin Pendik'de Tabanı Kim?</h2>
+      <p class="slide-sub" style="text-align:left;font-size:28px;">Geçersiz, Kullanılmayan ve Diğer Oyların Fazla Olduğu Mahallelerde Yeniden Refah Partisi'nin İlçe Ortalamasından Fazla Oy Aldığı veya Oyunu Arttırdığı Mahalleler.</p>
     </div>
     <div class="filter-bar" style="display:flex;gap:14px;justify-content:center;margin:8px 0 4px;flex-wrap:wrap;">
       <button class="flt-btn" data-flag="fy" style="font-family:var(--sans);font-size:15px;padding:10px 18px;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;border-radius:2px;font-weight:600;letter-spacing:0.02em;">+ YRP destekçisi <span style="color:var(--muted);font-weight:400;">(26)</span></button>
@@ -974,7 +1024,7 @@
     </div>
     <div class="slide-legend">
             <span class="legend-item"><span class="legend-swatch" style="background:#2166ac;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>YRP başarılı</span>
-      <span class="legend-item"><span class="legend-swatch" style="background:#f4a261;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>YRP hedeflemeli</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#f4a261;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>YRP zayıf</span>
       <span class="legend-item" id="filter-status-a"><span class="legend-cap">Kayıp yüksek → <strong style="color:var(--accent);font-style:normal;">13 mahalle</strong></span></span>
     </div>
   </div>
@@ -984,15 +1034,15 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Pendik · YRP Strateji Sentezi</span><span class="slide-folio">20 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">YRP Stratejisi — Üç Filtrenin Birleşimi <span style="color:var(--muted);font-style:italic;font-weight:400;">(A ∪ B ∪ C)</span></h2>
-      <p class="slide-sub">A (kayıp yüksek) ∪ B (AKP daha çok kaybetti) ∪ C (Saadet 4 dönem) = <strong style="font-style:normal;">34 mahalle</strong>. Bunlardan YRP destekçisi olan <strong style="color:#2166ac;font-style:normal;">25 mahalle</strong> mavi (başarılı), olmayan <strong style="color:#f4a261;font-style:normal;">9 mahalle</strong> turuncu (hedeflemeli).</p>
+      <h2 class="slide-title">Yeniden Refah Partisi'nin Stratejisi Ne Olmalı?</h2>
+      <p class="slide-sub" style="text-align:left;font-size:28px;">Başarılı Olduğu Mahallelerde Kapasitesini Arttırmalı.</p>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_yrp_strategy.svg" type="image/svg+xml"></object>
     </div>
     <div class="slide-legend">
       <span class="legend-item"><span class="legend-swatch" style="background:#2166ac;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>YRP başarılı (25)</span>
-      <span class="legend-item"><span class="legend-swatch" style="background:#f4a261;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>YRP hedeflemeli (9)</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#f4a261;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>YRP zayıf (9)</span>
       <span class="legend-item"><span class="legend-swatch" style="background:#ece6d6;display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:middle;margin-right:6px;"></span>Kapsam dışı</span>
     </div>
   </div>
@@ -1002,8 +1052,7 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Strateji · Gelir Tipi</span><span class="slide-folio">21 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">Gelir Tipi: Başarılı vs Hedeflemeli</h2>
-      <p class="slide-sub">Başarılıda <strong style="font-style:normal;color:#3a86ff;">düşük gelir 395K seçmen</strong> (≈%85); hedeflemelide <strong style="font-style:normal;color:#3a86ff;">düşük gelir 28K</strong>, taşra 2.1K, orta 12K — daha karışık profil.</p>
+      <h2 class="slide-title">Yeniden Refah Partisi'nin Başarılı Olduğu Mahallelerde Nüfus Yüksek</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_strategy_gelir.svg" type="image/svg+xml"></object>
@@ -1019,8 +1068,7 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Strateji · Memleket Coğrafyası</span><span class="slide-folio">22 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">YRP Başarılı 25 Mahalle — Memleket Dağılımı</h2>
-      <p class="slide-sub">465.773 seçmenin nüfus ili × ilçesi: <strong style="font-style:normal;">Pendik (12.5K)</strong>, Bartın Ulus (8.1K), Erzincan Refahiye (7.1K), Ordu Mesudiye (5.5K), Ordu Akkuş (4.3K) çekirdeği.</p>
+      <h2 class="slide-title">Yeniden Refah Partisi'nin Başarılı Olduğu Mahallelerin Memleket Dağılımı</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_strategy_memleket.svg" type="image/svg+xml"></object>
@@ -1036,8 +1084,7 @@
   <div class="slide-inner">
     <div class="slide-head"><span class="slide-eyebrow">Strateji · 2024 Meclis</span><span class="slide-folio">23 / 23</span></div>
     <div class="slide-headblock">
-      <h2 class="slide-title">2024 Meclis Sonuçları + Seçmen Sayısı</h2>
-      <p class="slide-sub">Başarılı: <strong style="font-style:normal;color:#b91c1c;">465.773 seçmen</strong> · AKP %34.1 / CHP %30.2. Hedeflemeli: <strong style="font-style:normal;color:#b91c1c;">42.097 seçmen</strong> · CHP %34.0 birinci, AKP %33.5. YRP başarılı %3.7 vs hedeflemeli %2.7.</p>
+      <h2 class="slide-title">Yeniden Refah Partisi'nin Başarılı Olduğu Mahallelerin Seçim Sonuçları</h2>
     </div>
     <div class="slide-body">
       <object data="_v2_assets/pendik_strategy_secim.svg" type="image/svg+xml"></object>
@@ -1084,7 +1131,7 @@ window.addEventListener('load', function(){
       if (!toggleActive) html = opts.label + ' → <strong style="color:#2166ac;font-style:normal;">'+n+' mahalle</strong>';
       else {
         const op = opts.mode === 'intersect' ? '∩' : '∖';
-        html = opts.label + ' ' + op + ' ' + opts.toggleLabel + ' → <strong style="color:#2166ac;font-style:normal;">'+n+' YRP başarılı</strong> · <strong style="color:#f4a261;font-style:normal;">'+m+' YRP hedeflemeli</strong>';
+        html = opts.label + ' ' + op + ' ' + opts.toggleLabel + ' → <strong style="color:#2166ac;font-style:normal;">'+n+' YRP başarılı</strong> · <strong style="color:#f4a261;font-style:normal;">'+m+' YRP zayıf</strong>';
       }
       status.innerHTML = '<span class="legend-cap">'+html+'</span>';
     }

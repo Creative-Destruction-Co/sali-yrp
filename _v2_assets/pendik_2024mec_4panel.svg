@@ -110,16 +110,4 @@
 <text x="1388.4" y="758.0" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%6.0</text>
 <rect x="1360.0" y="799.4" width="29.2" height="42.6" fill="#bdb1a0" rx="2"/>
 <text x="1397.2" y="826.7" font-size="16" font-family="Inter Tight,sans-serif" font-weight="700" fill="#1a1a1a">%8.5</text>
-<line x1="205.0" y1="863" x2="345.0" y2="863" stroke="#999" stroke-width="0.6"/>
-<text x="205.0" y="883" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">0</text>
-<text x="345.0" y="883" text-anchor="end" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">%41</text>
-<line x1="590.0" y1="863" x2="730.0" y2="863" stroke="#999" stroke-width="0.6"/>
-<text x="590.0" y="883" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">0</text>
-<text x="730.0" y="883" text-anchor="end" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">%41</text>
-<line x1="975.0" y1="863" x2="1115.0" y2="863" stroke="#999" stroke-width="0.6"/>
-<text x="975.0" y="883" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">0</text>
-<text x="1115.0" y="883" text-anchor="end" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">%41</text>
-<line x1="1360.0" y1="863" x2="1500.0" y2="863" stroke="#999" stroke-width="0.6"/>
-<text x="1360.0" y="883" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">0</text>
-<text x="1500.0" y="883" text-anchor="end" font-size="13" font-family="Inter Tight,sans-serif" fill="#666">%41</text>
 </svg>

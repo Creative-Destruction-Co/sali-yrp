@@ -36,52 +36,50 @@ gdf['_n'] = gdf['MAHALLEADI'].apply(normalize_mahalle)
 for k,d in data.items():
     gdf[f'v_{k}'] = gdf['_n'].map(d['_avg']) * 100
 
-# Panel-bazli vmin/vmax
-vstats = {}
+# Sapma (deviation) hesabı: ortak skala
 for k in data:
-    s = gdf[f'v_{k}']
-    vstats[k] = (float(s.min()), float(s.max()))
-    print(f'  {k}: min={vstats[k][0]:.2f}, max={vstats[k][1]:.2f}, ilce={ilce_avg[k]:.2f}')
+    gdf[f'd_{k}'] = gdf[f'v_{k}'] - ilce_avg[k]
+all_dev = pd.concat([gdf[f'd_{k}'] for k in data]).dropna()
+DMAX = float(max(abs(all_dev.min()), abs(all_dev.max())))
+print(f'Global sapma sınırı: ±{DMAX:.2f} puan')
 
-def color(v, vmin, ilce, vmax):
-    if pd.isna(v): return '#ececec'
-    if v <= ilce:
-        a = (ilce - v) / (ilce - vmin) if (ilce - vmin) > 0 else 0
-        a = max(0, min(1, a))
+def color(d):
+    if pd.isna(d): return '#ececec'
+    t = max(-1, min(1, d/DMAX))
+    if t <= 0:
+        a = -t
         r=int(247+(178-247)*a); g=int(247+( 24-247)*a); b=int(247+( 43-247)*a)
     else:
-        t = (v - ilce) / (vmax - ilce) if (vmax - ilce) > 0 else 0
-        t = max(0, min(1, t))
         r=int(247+( 33-247)*t); g=int(247+(102-247)*t); b=int(247+(172-247)*t)
     return f'#{r:02x}{g:02x}{b:02x}'
 
 minx, miny, maxx, maxy = gdf.total_bounds
 bw, bh = maxx-minx, maxy-miny
 
-# Layout: 2x2 grid
-W, H = 1600, 1000
+# Layout: 2x2 grid + alt ortak lejant alanı
+W, H = 1600, 1100
+LEG_AREA = 100
+GRID_H = H - LEG_AREA
 COLS, ROWS = 2, 2
 cell_w = W / COLS
-cell_h = H / ROWS
-TITLE_H = 60
-LEG_H = 70
+cell_h = GRID_H / ROWS
+TITLE_H = 80
 inner_pad = 18
 map_w = cell_w - 2*inner_pad
-map_h = cell_h - TITLE_H - LEG_H - inner_pad
+map_h = cell_h - TITLE_H - inner_pad
 sp = min(map_w/bw, map_h/bh)
 draw_w = bw*sp; draw_h = bh*sp
 
 elems = []
-elems.append('<defs><linearGradient id="sgrad" x1="0%" x2="100%"><stop offset="0%" stop-color="#b2182b"/><stop offset="50%" stop-color="#f7f7f7"/><stop offset="100%" stop-color="#2166ac"/></linearGradient></defs>')
 
 panels = list(data.keys())
 for i,k in enumerate(panels):
     cx = (i % COLS) * cell_w
     cy = (i // COLS) * cell_h
-    vmin, vmax = vstats[k]; il = ilce_avg[k]
-    # baslik
-    elems.append(f'<text x="{cx + cell_w/2:.1f}" y="{cy + 32}" text-anchor="middle" font-size="22" font-family="Newsreader,serif" font-weight="600" fill="#1a1a1a">{escape(k)}</text>')
-    elems.append(f'<text x="{cx + cell_w/2:.1f}" y="{cy + 52}" text-anchor="middle" font-size="14" font-family="Inter Tight,sans-serif" font-style="italic" fill="#666">Pendik ortalaması: %{il:.2f}</text>')
+    il = ilce_avg[k]
+    # baslik (büyütüldü)
+    elems.append(f'<text x="{cx + cell_w/2:.1f}" y="{cy + 38}" text-anchor="middle" font-size="30" font-family="Newsreader,serif" font-weight="600" fill="#1a1a1a">{escape(k)}</text>')
+    elems.append(f'<text x="{cx + cell_w/2:.1f}" y="{cy + 64}" text-anchor="middle" font-size="20" font-family="Inter Tight,sans-serif" font-style="italic" fill="#666">Pendik ortalaması: %{il:.2f}</text>')
     # harita transform
     ox = cx + (cell_w - draw_w)/2
     oy = cy + TITLE_H + (map_h - draw_h)/2
@@ -102,26 +100,17 @@ for i,k in enumerate(panels):
                 d = 'M ' + ' L '.join(f'{tr(x,y)[0]:.2f} {tr(x,y)[1]:.2f}' for x,y in cs)+' Z'
                 rings.append(d)
         if not rings: continue
-        v = row[f'v_{k}']
-        fill = color(v, vmin, il, vmax)
-        lbl = f"{row['MAHALLEADI']} — %{v:.2f}" if not pd.isna(v) else f"{row['MAHALLEADI']} — veri yok"
+        v = row[f'v_{k}']; d = row[f'd_{k}']
+        fill = color(d)
+        lbl = f"{row['MAHALLEADI']} — %{v:.2f} (sapma {d:+.2f})" if not pd.isna(v) else f"{row['MAHALLEADI']} — veri yok"
         elems.append(f'<path d="{' '.join(rings)}" fill="{fill}" stroke="#fff" stroke-width="0.5"><title>{escape(lbl)}</title></path>')
-    # panel-ici lejant (asimetrik gradient): vmin -> il -> vmax
-    leg_y = cy + TITLE_H + map_h + 16
-    leg_w = cell_w * 0.62
-    leg_x0 = cx + (cell_w - leg_w)/2
-    # ortalamanin bargradient'taki konumu
-    midpct = (il - vmin)/(vmax - vmin)*100 if vmax>vmin else 50
-    elems.append(f'<rect x="{leg_x0:.1f}" y="{leg_y}" width="{leg_w:.1f}" height="12" '
-                 f'fill="url(#sgrad-{i})" stroke="#999" stroke-width="0.5"/>')
-    elems.append(f'<linearGradient id="sgrad-{i}" x1="0%" x2="100%">'
-                 f'<stop offset="0%" stop-color="#b2182b"/>'
-                 f'<stop offset="{midpct:.1f}%" stop-color="#f7f7f7"/>'
-                 f'<stop offset="100%" stop-color="#2166ac"/>'
-                 f'</linearGradient>')
-    elems.append(f'<text x="{leg_x0:.1f}" y="{leg_y + 28}" font-size="13" font-family="Inter Tight,sans-serif" fill="#444">%{vmin:.2f}</text>')
-    elems.append(f'<text x="{leg_x0 + leg_w*midpct/100:.1f}" y="{leg_y + 28}" text-anchor="middle" font-size="13" font-family="Inter Tight,sans-serif" fill="#444">%{il:.2f}</text>')
-    elems.append(f'<text x="{leg_x0 + leg_w:.1f}" y="{leg_y + 28}" text-anchor="end" font-size="13" font-family="Inter Tight,sans-serif" fill="#444">%{vmax:.2f}</text>')
+
+# Ortak lejant (alt orta)
+elems.append('<defs><linearGradient id="sgrad-c" x1="0%" x2="100%"><stop offset="0%" stop-color="#b2182b"/><stop offset="50%" stop-color="#f7f7f7"/><stop offset="100%" stop-color="#2166ac"/></linearGradient></defs>')
+leg_w = W*0.40; leg_x0 = (W-leg_w)/2; leg_y = GRID_H + 30
+elems.append(f'<rect x="{leg_x0:.1f}" y="{leg_y}" width="{leg_w:.1f}" height="14" fill="url(#sgrad-c)" stroke="#999" stroke-width="0.5"/>')
+for t,lbl in [(0,f'{-DMAX:+.1f} puan'),(0.5,'0'),(1,f'{+DMAX:+.1f} puan')]:
+    elems.append(f'<text x="{leg_x0 + leg_w*t:.1f}" y="{leg_y + 32}" text-anchor="{"start" if t==0 else "end" if t==1 else "middle"}" font-size="14" font-family="Inter Tight,sans-serif" fill="#444">{lbl}</text>')
 
 svg = (f'<?xml version="1.0" encoding="UTF-8"?>\n'
        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '

@@ -139,15 +139,6 @@ for _, row in g1.iterrows():
     if not d: continue
     elems.append(f'<path d="{d}" fill="none" stroke="#222" stroke-width="0.6" pointer-events="none"/>')
 
-leg_y = H - 45
-leg_x0 = W*0.32; leg_w = W*0.36
-elems.append('<defs><linearGradient id="memg2" x1="0%" x2="100%"><stop offset="0%" stop-color="#f7fbff"/><stop offset="100%" stop-color="#2166ac"/></linearGradient></defs>')
-elems.append(f'<rect x="{leg_x0}" y="{leg_y}" width="{leg_w}" height="12" fill="url(#memg2)" stroke="#999" stroke-width="0.5"/>')
-for ti, t in enumerate([0.0, 0.25, 0.5, 0.75, 1.0]):
-    xv = leg_x0 + leg_w*t
-    val = int(vmax*t)
-    elems.append(f'<text x="{xv:.1f}" y="{leg_y+30}" text-anchor="middle" font-size="13" font-family="Inter Tight,sans-serif" fill="#444">{val:,}</text>')
-elems.append(f'<text x="{leg_x0+leg_w/2:.1f}" y="{leg_y-8}" text-anchor="middle" font-size="13" font-family="Inter Tight,sans-serif" fill="#444">Pendikteki secmen sayisi (Pendik kendisi 21.792 ile cap disi)</text>')
 
 svg = ('<?xml version="1.0" encoding="UTF-8"?>\n'
        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">\n'
