@@ -1,0 +1,28 @@
+# THINKER-CO workflow dosyalari upstream Creative-Destruction-Co/sali-yrp'ye commit edilmiyor
+*-context.md
+*-notes.md
+*-progress.md
+*.drawio
+README.md
+meetings/
+research/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
